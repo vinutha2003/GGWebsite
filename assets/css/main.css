@@ -3843,6 +3843,7 @@ section,
 
 /* --- All of your existing desktop CSS code goes above this line --- */
 /* ... (e.g., styles for .header-container, .hero-section, etc.) ... */
+/* Logo text stays full, does not get cut */
 
 /* === FIX: Prevent logo clipping on mobile === */
 @media (max-width: 768px) {
@@ -3853,13 +3854,15 @@ section,
     padding: 10px 15px !important;
   }
 
-  /* Logo text stays full, does not get cut */
+  
   .header .site-name,
-  .header .logo h1 {
+  .header .logo h1 
+  {
     font-size: 20px;
     white-space: nowrap;
     overflow: visible;
   }
+
 
   /* Social icons + phone + email wrap neatly below */
   .header-social {
