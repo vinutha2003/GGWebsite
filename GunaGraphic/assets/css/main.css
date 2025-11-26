@@ -3920,3 +3920,81 @@ section,
         padding: 40px 10px !important;   /* Forces smaller padding */
     }
 }
+
+/* 📱 Mobile Fix for Social + Contact Row */
+@media (max-width: 768px) {
+
+  .header-social {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .header-social .social-link {
+    font-size: 18px;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 14px;
+    line-height: 18px;
+    width: 100%;
+    white-space: normal !important;
+  }
+
+   .contact-info .separator {
+    display: none; /* hides | on mobile (optional, looks cleaner) */
+  }
+  
+  .contact-info .contact-email {
+    word-break: break-word;
+  }
+}
+
+
+/* 📱 Mobile Responsive Fix for Header */
+@media (max-width: 768px) {
+
+    /* Make the header area stack */
+    .header-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+        padding: 10px 0;
+    }
+
+    /* Social icons row */
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* Phone + Email + Name */
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 5px;
+        width: 100%;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    /* Avoid long email overflow */
+    .contact-info a,
+    .contact-info span {
+        word-break: break-word;
+    }
+}
