@@ -3820,9 +3820,6 @@ section,
     color: #25D366; /* WhatsApp Green */
 }
 
-.header-social .bi-youtube {
-    color: #FF0000; /* YouTube Red */
-}
 
 .header-social .bi-linkedin {
     color: #0A66C2; /* LinkedIn Blue */
@@ -3888,72 +3885,49 @@ section,
   }
 }
 
-/* ----------------------------------------------------------------
-# MOBILE MEDIA QUERY - Styles for screens 768px wide or less
----------------------------------------------------------------- */
-@media (max-width: 768px) {
-    /* * 1. Fix the Header/Contact Info */
-    #topbar .contact-info {
-        /* Make the elements stack vertically instead of side-by-side */
-        display: block !important; 
-        text-align: center;
-        padding-bottom: 5px;
-    }
-    
-    #topbar .social-links {
-        /* Center the social icons */
-        text-align: center;
-        margin-top: 5px;
-    }
 
-    /* * 2. Fix the Heading Text Size */
-    #hero h1 { /* Target the main CREATIVE DESIGNER text */
-        font-size: 36px; /* Reduce font size significantly */
-        line-height: 1.2;
-    }
-    
-    #hero h2 { /* Target the subheading Our Brand Your Story */
-        font-size: 20px;
-    }
-    
-    /* * 3. Adjust Padding/Margins for smaller space */
-    section {
-        padding: 40px 10px; /* Reduce vertical and horizontal padding on sections */
-    }
-}
 
-/* 📱 Mobile Fix for Social + Contact Row */
+
+/* 📱 Mobile Fix for Social + Contact Row (CORRECTED HORIZONTAL ALIGNMENT) */
 @media (max-width: 768px) {
 
-  .header-social {
-    display: flex;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px;
-    width: 100%;
-    padding-top: 10px;
-  }
+    /* This forces the social icons and contact-info block into a horizontal, centered row */
+ .header-social {
+ display: flex;
+ flex-direction: row; /* Enforce horizontal layout */
+ flex-wrap: wrap; /* Allow wrapping if screen is very narrow */
+ align-items: center; 
+ justify-content: center; 
+ gap: 15px; /* Add space between social icons and contact-info */
+ width: 100%;
+ padding-top: 10px;
+ }
 
-  .header-social .social-link {
-    font-size: 18px;
-  }
+ .header-social .social-link 
+ {
+ font-size: 18px;
+ }
 
-  .contact-info {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: 14px;
-    line-height: 18px;
-    width: 100%;
-    white-space: normal !important;
-  }
+    /* This forces the phone number and email to sit side-by-side */
+ .contact-info {
+ display: flex;
+ flex-direction: row; /* Enforce horizontal layout */
+ flex-wrap: wrap; 
+ align-items: center; 
+ justify-content: center;
+ gap: 5px; /* Small gap between phone, separator, and email */
+ text-align: center;
+ font-size: 14px;
+ line-height: 18px;
+ width: auto; 
+ white-space: normal; 
+ }
 
-  .contact-info .separator {
-    display: none; /* hides | on mobile (optional, looks cleaner) */
-  }
+ .contact-info .separator {
+ display: inline; /* Make sure the '|' separator shows */
+ }
 
-  .contact-info .contact-email {
-    word-break: break-word;
-  }
+ .contact-info .contact-email {
+ word-break: break-word;
+ }
 }
