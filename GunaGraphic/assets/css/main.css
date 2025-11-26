@@ -3895,7 +3895,7 @@ section,
     /* * 1. Fix the Header/Contact Info */
     #topbar .contact-info {
         /* Make the elements stack vertically instead of side-by-side */
-        display: block !important; 
+        display: block !important;  /* Forces vertical stacking */
         text-align: center;
         padding-bottom: 5px;
     }
@@ -3908,16 +3908,15 @@ section,
 
     /* * 2. Fix the Heading Text Size */
     #hero h1 { /* Target the main CREATIVE DESIGNER text */
-        font-size: 36px; /* Reduce font size significantly */
-        line-height: 1.2;
+        font-size: 36px !important;    /* Forces smaller font size */
     }
     
     #hero h2 { /* Target the subheading Our Brand Your Story */
-        font-size: 20px;
+        font-size: 20px !important;   /* Forces smaller font size */
     }
     
     /* * 3. Adjust Padding/Margins for smaller space */
     section {
-        padding: 40px 10px; /* Reduce vertical and horizontal padding on sections */
+        padding: 40px 10px !important;   /* Forces smaller padding */
     }
 }
