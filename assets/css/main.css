@@ -3922,3 +3922,38 @@ section,
     }
 }
 
+/* 📱 Mobile Fix for Social + Contact Row */
+@media (max-width: 768px) {
+
+  .header-social {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .header-social .social-link {
+    font-size: 18px;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 14px;
+    line-height: 18px;
+    width: 100%;
+    white-space: normal !important;
+  }
+
+  .contact-info .separator {
+    display: none; /* hides | on mobile (optional, looks cleaner) */
+  }
+
+  .contact-info .contact-email {
+    word-break: break-word;
+  }
+}
