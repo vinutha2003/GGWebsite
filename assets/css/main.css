@@ -3843,6 +3843,10 @@ section,
 
 /* --- All of your existing desktop CSS code goes above this line --- */
 /* ... (e.g., styles for .header-container, .hero-section, etc.) ... */
+
+
+
+
 /* Logo text stays full, does not get cut */
 
 /* === FIX: Prevent logo clipping on mobile === */
@@ -3933,4 +3937,45 @@ section,
  .contact-info .contact-email {
  word-break: break-word;
  }
+}
+
+/* ================================
+   MOBILE FIX – SINGLE LINE HEADER
+================================= */
+@media (max-width: 480px) {
+
+  /* Entire right-side header block */
+  .header-social {
+    display: flex;
+    flex-wrap: nowrap !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;            /* scrolling if needed */
+    width: 100%;
+    padding: 6px 0;
+  }
+
+  /* Social icons */
+  .header-social .social-link i {
+    font-size: 16px !important;
+    min-width: 16px;
+  }
+
+  /* phone + email container */
+  .contact-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap !important;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: 12px !important;
+  }
+
+  .contact-phone,
+  .contact-email {
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
 }
