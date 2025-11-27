@@ -4046,3 +4046,59 @@ section,
       min-width: max-content;
   }
 }
+
+/* ================================
+   STYLING Gunaagraphics LOGO
+================================ */
+.highlight-logo {
+    color: #ffb400 !important;   /* yellow-gold highlight */
+    font-weight: 900 !important; /* bold */
+    font-style: italic !important;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   ONE-LINE HEADER FIX (Desktop + Mobile)
+======================================== */
+.header .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: nowrap; /* SUPER IMPORTANT */
+  width: 100%;
+}
+
+/* Right section (icons + phone + email) */
+.header-social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    overflow-x: auto;     /* ensures one-line on all mobiles */
+}
+
+.header-social::-webkit-scrollbar {
+    display: none;
+}
+
+/* Social icons */
+.header-social .social-link i {
+    font-size: 20px;
+}
+
+/* Contact info – phone + email */
+.contact-info {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    white-space: nowrap;
+    align-items: center;
+    font-size: 15px;
+}
+
+.contact-phone,
+.contact-email {
+    white-space: nowrap;
+}
