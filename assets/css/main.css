@@ -206,7 +206,7 @@ h6 {
 }
 
  /* MOBILE HEADER LAYOUT */
-@media (max-width: 991px) {
+@media (min-width: 991px) {
 
   .header {
     padding: 8px 0;
@@ -270,7 +270,7 @@ h6 {
 }
 
 /* EXTRA SMALL TWEAKS */
-@media (max-width: 480px) {
+@media (min-width: 480px) {
   .header .header-container {
     padding: 8px 12px;
     gap: 6px;
@@ -294,7 +294,7 @@ h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /* Navmenu - Desktop */
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
   .navmenu {
     padding: 0;
   }
@@ -3945,7 +3945,7 @@ section,
 }
 
 /* Extra-small screen fix */
-@media (max-width: 480px) {
+@media (min-width: 480px) {
   .header .site-name,
   .header .logo h1 {
     font-size: 18px !important;
@@ -3956,7 +3956,7 @@ section,
 
 
 /* 📱 Mobile Fix for Social + Contact Row (CORRECTED HORIZONTAL ALIGNMENT) */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
 
     /* This forces the social icons and contact-info block into a horizontal, centered row */
  .header-social {
@@ -4048,7 +4048,7 @@ section,
 }
 
 /* GunaaGraphics Logo Text Styling */
-  .site-name 
+  .header.site-name 
   {
     font-size: 42px !important;      /* Bigger */
     font-weight: 900 !important;     /* Extra Bold */
