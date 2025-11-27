@@ -204,31 +204,90 @@ h6 {
  background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
 
- @media (max-width: 1200px) {
- .header {
- padding-top: 10px;
- }
+ /* MOBILE HEADER LAYOUT */
+@media (max-width: 991px) {
 
- .header .header-container {
- margin-left: 10px;
- margin-right: 10px;
- padding: 10px 5px 10px 15px;
- }
+  .header {
+    padding: 8px 0;
+  }
 
- .header .logo {
- order: 1;
- }
+  .header .header-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 0 10px;
+    padding: 10px 16px;
+    border-radius: 20px;
+  }
 
- .header .btn-getstarted {
- order: 2;
- margin: 0 10px 0 0;
- padding: 6px 15px;
- }
+  /* Top row: logo + hamburger */
+  .header .logo {
+    order: 1;
+    flex: 1 1 auto;
+  }
 
- .header .navmenu {
- order: 3;
- }
+  .header .btn-getstarted {
+    display: none;              /* hide big button on very small screens */
+  }
+
+  .mobile-nav-toggle {
+    order: 2;
+    flex: 0 0 auto;
+  }
+
+  /* Second row: socials + contact, centered */
+  .header-social {
+    order: 3;
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .header-social a {
+    font-size: 18px;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 13px;
+  }
+
+  .contact-info span,
+  .contact-info a {
+    white-space: nowrap;
+  }
 }
+
+/* EXTRA SMALL TWEAKS */
+@media (max-width: 480px) {
+  .header .header-container {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .header .logo h1 {
+    font-size: 18px;
+  }
+
+  .header-social {
+    gap: 8px;
+  }
+
+  .contact-info {
+    font-size: 12px;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -3943,6 +4002,7 @@ section,
 /* =============================================
    UNIVERSAL MOBILE FIX FOR ALL ANDROID PHONES
    (Header Icons + Phone + Email + Logo)New
+
 ============================================= */
 @media (max-width: 600px) {
   .header-social {
