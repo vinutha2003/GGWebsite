@@ -1,9 +1,8 @@
 /* =========================================================================
-   Optimized & Rectified main.css for GunaaGraphics
-   - Cleaned, de-duplicated, responsive
-   - Header fixes: two-row mobile, bold/italic highlighted site-name
-   - Hero h1 reduced on mobile
-   - Keep bootstrap compatibility
+   GGWebsite — merged & upgraded main.css
+   - Visuals and polish taken from GG-website (colors, shadows, cards, animations)
+   - Preserves font sizes & responsive layout from your existing GGWebsite
+   - Keeps header/hero mobile+desktop alignment intact
    ========================================================================= */
 
 /* ---------------------------
@@ -26,6 +25,9 @@
   --nav-mobile-background-color: #29343a;
   --nav-dropdown-background-color: #29343a;
   --nav-dropdown-color: rgba(255,255,255,0.85);
+
+  /* small utility */
+  --glass-border: color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
 /* Basic resets & base typography */
@@ -37,15 +39,16 @@ body{
   background-color: var(--background-color);
   line-height:1.6;
   -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing:antialiased;
 }
 
 /* Links */
-a{ color: var(--accent-color); text-decoration:none; transition: color .2s; }
-a:hover{ color: color-mix(in srgb, var(--accent-color), transparent 25%); text-decoration:none; }
+a{ color: var(--accent-color); text-decoration:none; transition: color .25s ease, transform .15s ease; }
+a:hover{ color: color-mix(in srgb, var(--accent-color), transparent 25%); text-decoration:none; transform: translateY(-1px); }
 
-/* Headings */
+/* Headings — preserve your font-size rules exactly */
 h1,h2,h3,h4,h5,h6{ color:var(--heading-color); font-family:var(--heading-font); margin:0; }
-h1{ font-size:clamp(2rem, 6vw, 5rem); font-weight:800; line-height:1.05; }
+h1{ font-size:clamp(2rem, 6vw, 5rem); font-weight:800; line-height:1.05; } /* keep same sizes as before */
 h2{ font-size:1.75rem; font-weight:700; }
 
 /* Small helper utilities used by template */
@@ -54,10 +57,7 @@ h2{ font-size:1.75rem; font-weight:700; }
 .col{ padding: 0 15px; }
 
 /* -------------------------------------------------------------------------
-   Header (global) - cleaned & fixed
-   - Two-row mobile behavior:
-     Row 1: logo + nav (desktop), centered on mobile
-     Row 2: social icons + phone + email (centered on mobile)
+   Header (global) - keep your working layout, add subtle visual polish
    ------------------------------------------------------------------------- */
 
 .header{
@@ -69,19 +69,22 @@ h2{ font-size:1.75rem; font-weight:700; }
   display:flex;
   justify-content:center;
   pointer-events:auto;
+  transition: all .35s ease;
 }
 
 /* pill container surrounding header inner content */
 .header .header-container{
-  background: var(--surface-color);
+  background: linear-gradient(180deg, rgba(27,38,44,0.98), rgba(27,38,44,0.95));
   border-radius: 50px;
   padding: 8px 22px;
   display:flex;
   flex-direction:column; /* stacked by default for safety, overridden on large screens */
   gap:8px;
   align-items:center;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.02);
   width: min(1150px, calc(100% - 30px));
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.02);
 }
 
 /* Row 1: logo + nav (desktop) */
@@ -103,9 +106,9 @@ h2{ font-size:1.75rem; font-weight:700; }
   padding:0;
 }
 
-/* Site name (text logo) - bold, italic, highlighted */
+/* Site name (text logo) - keep existing font-size & style */
 .site-name{
-  font-size: 38px;
+  font-size: 38px; /* preserved from your file */
   font-weight: 900;
   font-style: italic;
   color: var(--accent-color);
@@ -115,6 +118,7 @@ h2{ font-size:1.75rem; font-weight:700; }
   display:inline-block;
   text-rendering:optimizeLegibility;
   -webkit-font-smoothing:antialiased;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
 }
 
 /* Navmenu (desktop) */
@@ -129,9 +133,9 @@ h2{ font-size:1.75rem; font-weight:700; }
   font-size:16px;
   font-weight:500;
   white-space:nowrap;
-  transition: color .2s;
+  transition: color .2s, transform .15s;
 }
-.navmenu a:hover, .navmenu a.active{ color: var(--nav-hover-color); }
+.navmenu a:hover, .navmenu a.active{ color: var(--nav-hover-color); transform: translateY(-2px); }
 
 /* Mobile nav toggle (hamburger) - visible on small */
 .mobile-nav-toggle{ display:none; cursor:pointer; font-size:26px; color:var(--nav-color); }
@@ -150,18 +154,22 @@ h2{ font-size:1.75rem; font-weight:700; }
 }
 
 /* social links */
-.header-row-2 .social-link{ color:var(--default-color); display:inline-flex; align-items:center; justify-content:center; }
+.header-row-2 .social-link{ color:var(--default-color); display:inline-flex; align-items:center; justify-content:center; padding:6px; border-radius:8px; transition:all .18s; }
 .header-row-2 .social-link i{ font-size:18px; line-height:0; display:inline-block; vertical-align:middle; }
+.header-row-2 .social-link:hover { transform: translateY(-2px); color:var(--contrast-color); background: rgba(227,161,39,0.06); }
 
 /* contact info */
 .contact-info{ display:flex; align-items:center; gap:10px; font-size:14px; color:var(--default-color); white-space:nowrap; }
-.contact-email, .contact-phone{ display:inline-block; }
+.contact-email, .contact-phone{ display:inline-block; padding:4px 6px; border-radius:6px; background: rgba(255,255,255,0.01); }
 
 /* hide scrollbars visually on header row if overflow */
 .header-row-2::-webkit-scrollbar, .header .header-container::-webkit-scrollbar{ height:0; width:0; display:none; }
 
+/* subtle sticky compress on scroll (keeps alignment intact) */
+.header.shrink { top: 8px; transform: translateY(-2px) scale(.995); }
+
 /* -------------------------------------------------------------------------
-   Hero Section (main heading sizing adjustments)
+   Hero Section (main heading sizing adjustments) — keep your font sizes
    ------------------------------------------------------------------------- */
 .hero{
   position:relative;
@@ -176,18 +184,19 @@ h2{ font-size:1.75rem; font-weight:700; }
 .hero .container{ position:relative; z-index:2; }
 .hero .main-heading{ margin-bottom:1.5rem; }
 .hero .main-heading h1{
-  font-size: 5rem;
+  font-size: 5rem; /* PRESERVED */
   font-weight:800;
   line-height:1.05;
   letter-spacing:-1px;
   margin:0 0 .5rem 0;
+  text-shadow: 0 8px 30px rgba(3,17,25,0.35);
 }
 .hero .main-heading h2{ font-size:1.35rem; font-weight:500; color: color-mix(in srgb, var(--default-color), transparent 20%); margin:0; }
 
 /* hero description */
 .hero .description p{ font-size:1rem; line-height:1.7; color: color-mix(in srgb, var(--default-color), transparent 20%); }
 
-/* hero CTA */
+/* hero CTA improved visuals */
 .hero .cta-button .btn{
   display:inline-flex;
   align-items:center;
@@ -195,37 +204,60 @@ h2{ font-size:1.75rem; font-weight:700; }
   padding:.75rem 1.25rem;
   border-radius:50px;
   font-weight:600;
-  background: transparent;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 40%);
-  color:var(--default-color);
+  background: linear-gradient(90deg, rgba(227,161,39,1), rgba(227,140,39,1));
+  border: 1px solid rgba(0,0,0,0.12);
+  color:var(--contrast-color);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform .18s ease, box-shadow .18s ease;
 }
-.hero .cta-button .btn:hover{ background:var(--accent-color); border-color:var(--accent-color); color:var(--contrast-color); }
+.hero .cta-button .btn:hover{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,0.28); }
+
+/* stats card (pulled from GG-website style) */
+.hero .stats-card {
+  position: absolute;
+  bottom: 8%;
+  right: 0;
+  background-color: rgba(27,38,44,0.7);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 20px 40px rgba(3,17,25,0.45);
+}
+.hero .stats-card .stats-number h2{ font-size:2.6rem; margin:0; color:var(--accent-color); }
 
 /* -------------------------------------------------------------------------
-   About / Services / General sections - cleaned essentials
+   About / Services / General sections - keep structure but add polish
    ------------------------------------------------------------------------- */
 .section{ padding:60px 0; color:var(--default-color); background:var(--background-color); }
 .section .section-title div{ color:var(--heading-color); font-size:28px; font-weight:700; text-transform:uppercase; font-family:var(--heading-font); }
 
-/* Simple card styles used across Services */
+/* Card styling upgrade */
 .service-card{
-  background: var(--surface-color);
+  background: linear-gradient(180deg, rgba(27,38,44,0.98), rgba(27,38,44,0.95));
   padding:28px;
   border-radius:12px;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
-  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 12px 30px rgba(3,17,25,0.5);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s;
 }
+.service-card:hover { transform: translateY(-8px); border-color: color-mix(in srgb, var(--accent-color), transparent 30%); box-shadow: 0 24px 48px rgba(3,17,25,0.55); }
 .service-card h3{ font-size:1.25rem; margin-bottom:8px; font-weight:700; color:var(--heading-color); }
 .service-card p{ color: color-mix(in srgb, var(--default-color), transparent 20%); }
 
 /* -------------------------------------------------------------------------
-   Portfolio grid basics
+   Portfolio grid basics (visual improvements)
    ------------------------------------------------------------------------- */
 .portfolio .portfolio-item{ padding:8px; }
-.portfolio .portfolio-entry img{ width:100%; display:block; border-radius:8px; }
+.portfolio .portfolio-entry img{ width:100%; display:block; border-radius:8px; transition: transform .35s ease, box-shadow .35s ease; }
+.portfolio .portfolio-entry img:hover { transform: translateY(-6px); box-shadow: 0 18px 30px rgba(0,0,0,0.45); }
 
 /* -------------------------------------------------------------------------
-   Footer essentials
+   Footer essentials (slightly modernized)
    ------------------------------------------------------------------------- */
 .footer{ padding:60px 0 40px; color:var(--default-color); background:var(--background-color); }
 .footer .footer-about .logo span{ color:var(--heading-color); font-size:30px; font-weight:700; }
@@ -259,7 +291,7 @@ h2{ font-size:1.75rem; font-weight:700; }
 @media (min-width:768px) and (max-width:991px){
   .header .header-container{ padding:10px 16px; }
   .site-name{ font-size:34px; }
-  .hero .main-heading h1{ font-size:4rem; }
+  .hero .main-heading h1{ font-size:4rem; } /* preserve */
 }
 
 /* ---------- Small / Mobile screens (<= 767px) ---------- */
@@ -285,7 +317,7 @@ h2{ font-size:1.75rem; font-weight:700; }
   .header-row-2 .social-link i{ font-size:16px; }
   .contact-info{ font-size:13px; gap:8px; }
 
-  /* Hero heading scaled down */
+  /* Hero heading scaled down (preserved) */
   .hero{ padding:60px 0; }
   .hero .main-heading h1{ font-size:3rem; }
 }
@@ -319,8 +351,13 @@ button{ cursor:pointer; }
 /* -------------------------------------------------------------------------
    Minor interactive details
    ------------------------------------------------------------------------- */
-.btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; border-radius:8px; border:0; background:var(--accent-color); color:var(--contrast-color); font-weight:600; }
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; border-radius:8px; border:0; background:var(--accent-color); color:var(--contrast-color); font-weight:600; transition: transform .18s ease, box-shadow .18s ease; box-shadow: 0 10px 24px rgba(3,17,25,0.36); }
+.btn:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(3,17,25,0.45); }
 .btn-outline{ background:transparent; border:1px solid color-mix(in srgb, var(--default-color), transparent 60%); color:var(--accent-color); }
+
+/* subtle fade-in helper */
+.fade-up { transform: translateY(8px); opacity:0; transition: all .6s cubic-bezier(.22,.9,.3,1); }
+.fade-up.in-view { transform: translateY(0); opacity:1; }
 
 /* -------------------------------------------------------------------------
    Small tweaks to avoid conflicts with bootstrapped template utilities
@@ -328,21 +365,28 @@ button{ cursor:pointer; }
 .section-title h2{ font-size:14px; letter-spacing:1.5px; color: color-mix(in srgb, var(--default-color), transparent 50%); text-transform:uppercase; }
 .section-title div{ font-size:28px; font-weight:700; color:var(--heading-color); }
 
-
-/* Desktop spacing fix for CREATIVE DESIGNER */
+/* -------------------------------------------------------------------------
+   Desktop spacing fix for CREATIVE DESIGNER (preserved)
+   ------------------------------------------------------------------------- */
 @media (min-width: 1024px) {
   #hero {
-    padding-top: 150px;  /* adjust this value as needed */
+    padding-top: 150px;  /* preserved and safe */
   }
 }
 
-
-/* --- FIX: Prevent hero title from going under header on mobile --- */
+/* -------------------------------------------------------------------------
+   Mobile hero overlap fix (preserved)
+   ------------------------------------------------------------------------- */
 @media (max-width: 767px) {
   #hero {
     padding-top: 210px !important;
   }
 }
 
+/* small responsive cleanup */
+@media (max-width: 991px) {
+  .hero .stats-card { position: relative; width:90%; margin: 0 auto; bottom:auto; right:auto; margin-top: 1.5rem; }
+  .service-card{ padding: 28px 22px; }
+}
 
-/* End of optimized main.css */
+/* End of upgraded main.css */
