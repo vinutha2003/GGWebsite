@@ -328,4 +328,12 @@ button{ cursor:pointer; }
 .section-title h2{ font-size:14px; letter-spacing:1.5px; color: color-mix(in srgb, var(--default-color), transparent 50%); text-transform:uppercase; }
 .section-title div{ font-size:28px; font-weight:700; color:var(--heading-color); }
 
+/* --- FIX HERO OVERLAP ON MOBILE --- */
+@media (max-width: 767px) {
+  #hero {
+    padding-top: 180px !important;
+  }
+}
+
+
 /* End of optimized main.css */
