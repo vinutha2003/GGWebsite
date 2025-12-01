@@ -328,6 +328,15 @@ button{ cursor:pointer; }
 .section-title h2{ font-size:14px; letter-spacing:1.5px; color: color-mix(in srgb, var(--default-color), transparent 50%); text-transform:uppercase; }
 .section-title div{ font-size:28px; font-weight:700; color:var(--heading-color); }
 
+
+/* Desktop spacing fix for CREATIVE DESIGNER */
+@media (min-width: 1024px) {
+  #hero {
+    padding-top: 150px;  /* adjust this value as needed */
+  }
+}
+
+
 /* --- FIX: Prevent hero title from going under header on mobile --- */
 @media (max-width: 767px) {
   #hero {
