@@ -397,6 +397,29 @@ button{ cursor:pointer; }
 }
 
 
+.stats-card {
+    background-color: #1c1c1e;
+    padding: 20px 25px;
+    width: fit-content;
+    border-radius: 12px;
+    color: white;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    display: inline-block;
+}
+
+.stats-card .stats-label {
+    font-size: 40px;
+    font-weight: 700;
+    color: #f1c232;  /* Yellow */
+    margin-bottom: 4px;
+}
+
+.stats-card p {
+    margin: 0;
+    font-size: 20px;
+    opacity: 0.9;
+}
 
 
 /* End of optimized main.css */
