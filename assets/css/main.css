@@ -344,5 +344,15 @@ button{ cursor:pointer; }
   }
 }
 
+/* Fix: Email going outside the header box */
+.header-row-2 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+
+
 
 /* End of optimized main.css */
