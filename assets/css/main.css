@@ -353,6 +353,10 @@ button{ cursor:pointer; }
     overflow: hidden;
 }
 
+.mobile-nav-toggle {
+    display: none !important;
+}
+
 
 
 /* End of optimized main.css */
