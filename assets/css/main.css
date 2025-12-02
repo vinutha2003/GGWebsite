@@ -448,6 +448,39 @@ button{ cursor:pointer; }
   max-width: 100px;
 }
 
+/* ============================
+   YELLOW EXPERIENCE BADGE (20+)
+   ============================ */
+.experience-badge {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  background: #e5a825;       /* Yellow */
+  padding: 25px 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.experience-badge .years {
+  display: block;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 1px;
+}
+
+.experience-badge .text {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+
 
 
 
