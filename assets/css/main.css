@@ -502,6 +502,51 @@ button{ cursor:pointer; }
     padding: 10px 0;
 }
 
+/* Make performance solutions Yellow */
+
+/* Yellow color for "performance solutions" */
+.service-heading span {
+  color: #e5a825 !important;   /* GOLD/YELLOW */
+}
+
+/* Yellow icons in service section */
+.service-card .service-icon i {
+  color: #e5a825 !important;
+  font-size: 42px;
+  padding: 20px;
+  background: rgba(229, 168, 37, 0.10);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* To highlight Creative Branding in Yellow */
+
+
+.highlight-yellow {
+    color: #e5a825 !important;
+}
+
+/* Fix service card title overflowing */
+.service-card h3 {
+  display: block;
+  width: 100%;
+  overflow-wrap: break-word;
+  white-space: normal !important;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* Do not force nowrap inside the card */
+.service-card h3 a {
+  white-space: normal !important;
+}
+
+/* Fix card height issues */
+.service-card {
+  overflow: hidden;
+  min-height: 320px;
+}
+
 
 
 
