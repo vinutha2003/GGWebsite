@@ -782,6 +782,26 @@ Shivajinagar, Bangalore-560051</p>
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script>
+document.querySelectorAll(".faq-item").forEach((item) => {
+
+  item.addEventListener("click", function () {
+
+    // Close all other faq items
+    document.querySelectorAll(".faq-item").forEach((faq) => {
+      if (faq !== item) {
+        faq.classList.remove("faq-active");
+      }
+    });
+
+    // Toggle only the clicked item
+    item.classList.toggle("faq-active");
+  });
+
+});
+</script>
+
+
 </body>
 
 </html>
