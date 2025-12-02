@@ -480,6 +480,29 @@ button{ cursor:pointer; }
   font-weight: 500;
 }
 
+/* =====================================
+   YELLOW ICONS FOR FEATURE ITEMS
+===================================== */
+.feature-item i {
+    color: #e5a825 !important;       /* Yellow Color */
+    font-size: 32px;                 /* Larger icon */
+    margin-bottom: 12px;             /* Space below icon */
+    display: block;                  /* Forces icon above heading */
+}
+
+/* Adjust heading style */
+.feature-item h5 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Optional: Add spacing and alignment */
+.feature-item {
+    text-align: left;
+    padding: 10px 0;
+}
+
+
 
 
 
