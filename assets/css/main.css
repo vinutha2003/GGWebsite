@@ -421,5 +421,37 @@ button{ cursor:pointer; }
     opacity: 0.9;
 }
 
+/* Yellow Line Section Headings */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.section-heading h2 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #b5b5b5 !important;
+}
+
+/* Yellow Line */
+.section-heading::after {
+  content: "";
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f9c349; /* Yellow line */
+  display: block;
+  border-radius: 5px;
+  max-width: 100px;
+}
+
+
+
+
+
+
 
 /* End of optimized main.css */
