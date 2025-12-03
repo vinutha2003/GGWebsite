@@ -793,6 +793,32 @@ button{ cursor:pointer; }
     }
 }
 
+/* 📱 FIX PORTFOLIO FILTER BUTTONS ON MOBILE */
+@media (max-width: 768px) {
+
+    /* Make container flexible */
+    .portfolio-filters,
+    .portfolio-category {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+        padding: 0 10px !important;
+    }
+
+    /* Style each button */
+    .portfolio-filters li,
+    .portfolio-category button {
+        padding: 10px 15px !important;
+        border-radius: 25px !important;
+        font-size: 14px !important;
+        white-space: nowrap !important;
+        width: auto !important;
+        max-width: 100% !important;
+    }
+}
+
 
 
 
