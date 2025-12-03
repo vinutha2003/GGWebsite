@@ -820,6 +820,33 @@ button{ cursor:pointer; }
 }
 
 
+/* 📱 MAKE PORTFOLIO FILTER BUTTONS VERTICAL ON MOBILE */
+@media (max-width: 768px) {
+
+    /* Container becomes vertical */
+    .portfolio-filters,
+    .portfolio-category {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        width: 100% !important;
+        padding: 0 15px !important;
+    }
+
+    /* Each button fills width nicely */
+    .portfolio-filters li,
+    .portfolio-category button {
+        width: 100% !important;
+        max-width: 300px !important; /* centered and neat */
+        text-align: center !important;
+        padding: 12px 15px !important;
+        border-radius: 25px !important;
+        font-size: 15px !important;
+    }
+}
+
+
 
 
 
