@@ -727,6 +727,74 @@ button{ cursor:pointer; }
 }
 
 
+/* ===========================
+   📱 MOBILE FIXES (MAX 768px)
+   =========================== */
+@media (max-width: 768px) {
+
+    /* 🔹 Fix Header Sliding & Overflow */
+    header, .top-header, .main-header {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .top-header .social-icons,
+    .top-header .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .top-header {
+        padding: 8px 10px;
+        text-align: center;
+    }
+
+    /* 🔹 Fix Brand Name box alignment */
+    .logo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ===============================
+       📌 PORTFOLIO SECTION FIX
+       =============================== */
+    .portfolio-category {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .portfolio-category button {
+        width: auto;
+        padding: 10px 18px;
+        font-size: 14px;
+        white-space: nowrap; /* Prevent breaking text */
+        border-radius: 30px;
+    }
+
+    /* Ensure images fit properly */
+    .portfolio-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* Padding for Portfolio Title */
+    #portfolio .section-title,
+    #portfolio h2 {
+        text-align: center;
+        padding: 0 10px;
+    }
+}
+
+
+
 
 
 
