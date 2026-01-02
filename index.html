@@ -693,6 +693,8 @@ Shivajinagar, Bangalore-560051</p>
               </form>
             </div>
           </div>
+
+          
         </div>
 
       </div>
@@ -777,7 +779,7 @@ Shivajinagar, Bangalore-560051</p>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+ 
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -805,6 +807,30 @@ document.querySelectorAll(".faq-item").forEach((item) => {
 
 });
 </script>
+
+<script>
+function sendToWhatsApp() {
+  const name = document.querySelector('[name="name"]').value.trim();
+  const email = document.querySelector('[name="email"]').value.trim();
+  const subject = document.querySelector('[name="subject"]').value.trim();
+  const message = document.querySelector('[name="message"]').value.trim();
+
+  if (!name || !email || !subject || !message) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  const phone = "919341281491"; // your WhatsApp number
+  const text =
+    `Name: ${name}%0A` +
+    `Email: ${email}%0A` +
+    `Subject: ${subject}%0A` +
+    `Message: ${message}`;
+
+  window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
+}
+</script>
+
 
 
 </body>
