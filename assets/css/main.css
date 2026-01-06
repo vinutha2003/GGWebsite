@@ -1,8 +1,9 @@
 /* =========================================================================
-   GGWebsite — merged & upgraded main.css
-   - Visuals and polish taken from GG-website (colors, shadows, cards, animations)
-   - Preserves font sizes & responsive layout from your existing GGWebsite
-   - Keeps header/hero mobile+desktop alignment intact
+   Optimized & Rectified main.css for GunaaGraphics
+   - Cleaned, de-duplicated, responsive
+   - Header fixes: two-row mobile, bold/italic highlighted site-name
+   - Hero h1 reduced on mobile
+   - Keep bootstrap compatibility
    ========================================================================= */
 
 /* ---------------------------
@@ -25,9 +26,6 @@
   --nav-mobile-background-color: #29343a;
   --nav-dropdown-background-color: #29343a;
   --nav-dropdown-color: rgba(255,255,255,0.85);
-
-  /* small utility */
-  --glass-border: color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
 /* Basic resets & base typography */
@@ -39,16 +37,15 @@ body{
   background-color: var(--background-color);
   line-height:1.6;
   -webkit-tap-highlight-color: transparent;
-  -webkit-font-smoothing:antialiased;
 }
 
 /* Links */
-a{ color: var(--accent-color); text-decoration:none; transition: color .25s ease, transform .15s ease; }
-a:hover{ color: color-mix(in srgb, var(--accent-color), transparent 25%); text-decoration:none; transform: translateY(-1px); }
+a{ color: var(--accent-color); text-decoration:none; transition: color .2s; }
+a:hover{ color: color-mix(in srgb, var(--accent-color), transparent 25%); text-decoration:none; }
 
-/* Headings — preserve your font-size rules exactly */
+/* Headings */
 h1,h2,h3,h4,h5,h6{ color:var(--heading-color); font-family:var(--heading-font); margin:0; }
-h1{ font-size:clamp(2rem, 6vw, 5rem); font-weight:800; line-height:1.05; } /* keep same sizes as before */
+h1{ font-size:clamp(2rem, 6vw, 5rem); font-weight:800; line-height:1.05; }
 h2{ font-size:1.75rem; font-weight:700; }
 
 /* Small helper utilities used by template */
@@ -57,7 +54,10 @@ h2{ font-size:1.75rem; font-weight:700; }
 .col{ padding: 0 15px; }
 
 /* -------------------------------------------------------------------------
-   Header (global) - keep your working layout, add subtle visual polish
+   Header (global) - cleaned & fixed
+   - Two-row mobile behavior:
+     Row 1: logo + nav (desktop), centered on mobile
+     Row 2: social icons + phone + email (centered on mobile)
    ------------------------------------------------------------------------- */
 
 .header{
@@ -69,22 +69,19 @@ h2{ font-size:1.75rem; font-weight:700; }
   display:flex;
   justify-content:center;
   pointer-events:auto;
-  transition: all .35s ease;
 }
 
 /* pill container surrounding header inner content */
 .header .header-container{
-  background: linear-gradient(180deg, rgba(27,38,44,0.98), rgba(27,38,44,0.95));
+  background: var(--surface-color);
   border-radius: 50px;
   padding: 8px 22px;
   display:flex;
   flex-direction:column; /* stacked by default for safety, overridden on large screens */
   gap:8px;
   align-items:center;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.02);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.12);
   width: min(1150px, calc(100% - 30px));
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.02);
 }
 
 /* Row 1: logo + nav (desktop) */
@@ -106,9 +103,9 @@ h2{ font-size:1.75rem; font-weight:700; }
   padding:0;
 }
 
-/* Site name (text logo) - keep existing font-size & style */
+/* Site name (text logo) - bold, italic, highlighted */
 .site-name{
-  font-size: 38px; /* preserved from your file */
+  font-size: 38px;
   font-weight: 900;
   font-style: italic;
   color: var(--accent-color);
@@ -118,7 +115,6 @@ h2{ font-size:1.75rem; font-weight:700; }
   display:inline-block;
   text-rendering:optimizeLegibility;
   -webkit-font-smoothing:antialiased;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
 }
 
 /* Navmenu (desktop) */
@@ -133,9 +129,9 @@ h2{ font-size:1.75rem; font-weight:700; }
   font-size:16px;
   font-weight:500;
   white-space:nowrap;
-  transition: color .2s, transform .15s;
+  transition: color .2s;
 }
-.navmenu a:hover, .navmenu a.active{ color: var(--nav-hover-color); transform: translateY(-2px); }
+.navmenu a:hover, .navmenu a.active{ color: var(--nav-hover-color); }
 
 /* Mobile nav toggle (hamburger) - visible on small */
 .mobile-nav-toggle{ display:none; cursor:pointer; font-size:26px; color:var(--nav-color); }
@@ -154,22 +150,18 @@ h2{ font-size:1.75rem; font-weight:700; }
 }
 
 /* social links */
-.header-row-2 .social-link{ color:var(--default-color); display:inline-flex; align-items:center; justify-content:center; padding:6px; border-radius:8px; transition:all .18s; }
+.header-row-2 .social-link{ color:var(--default-color); display:inline-flex; align-items:center; justify-content:center; }
 .header-row-2 .social-link i{ font-size:18px; line-height:0; display:inline-block; vertical-align:middle; }
-.header-row-2 .social-link:hover { transform: translateY(-2px); color:var(--contrast-color); background: rgba(227,161,39,0.06); }
 
 /* contact info */
 .contact-info{ display:flex; align-items:center; gap:10px; font-size:14px; color:var(--default-color); white-space:nowrap; }
-.contact-email, .contact-phone{ display:inline-block; padding:4px 6px; border-radius:6px; background: rgba(255,255,255,0.01); }
+.contact-email, .contact-phone{ display:inline-block; }
 
 /* hide scrollbars visually on header row if overflow */
 .header-row-2::-webkit-scrollbar, .header .header-container::-webkit-scrollbar{ height:0; width:0; display:none; }
 
-/* subtle sticky compress on scroll (keeps alignment intact) */
-.header.shrink { top: 8px; transform: translateY(-2px) scale(.995); }
-
 /* -------------------------------------------------------------------------
-   Hero Section (main heading sizing adjustments) — keep your font sizes
+   Hero Section (main heading sizing adjustments)
    ------------------------------------------------------------------------- */
 .hero{
   position:relative;
@@ -184,19 +176,18 @@ h2{ font-size:1.75rem; font-weight:700; }
 .hero .container{ position:relative; z-index:2; }
 .hero .main-heading{ margin-bottom:1.5rem; }
 .hero .main-heading h1{
-  font-size: 5rem; /* PRESERVED */
+  font-size: 5rem;
   font-weight:800;
   line-height:1.05;
   letter-spacing:-1px;
   margin:0 0 .5rem 0;
-  text-shadow: 0 8px 30px rgba(3,17,25,0.35);
 }
 .hero .main-heading h2{ font-size:1.35rem; font-weight:500; color: color-mix(in srgb, var(--default-color), transparent 20%); margin:0; }
 
 /* hero description */
 .hero .description p{ font-size:1rem; line-height:1.7; color: color-mix(in srgb, var(--default-color), transparent 20%); }
 
-/* hero CTA improved visuals */
+/* hero CTA */
 .hero .cta-button .btn{
   display:inline-flex;
   align-items:center;
@@ -204,60 +195,37 @@ h2{ font-size:1.75rem; font-weight:700; }
   padding:.75rem 1.25rem;
   border-radius:50px;
   font-weight:600;
-  background: linear-gradient(90deg, rgba(227,161,39,1), rgba(227,140,39,1));
-  border: 1px solid rgba(0,0,0,0.12);
-  color:var(--contrast-color);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: transform .18s ease, box-shadow .18s ease;
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 40%);
+  color:var(--default-color);
 }
-.hero .cta-button .btn:hover{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,0.28); }
-
-/* stats card (pulled from GG-website style) */
-.hero .stats-card {
-  position: absolute;
-  bottom: 8%;
-  right: 0;
-  background-color: rgba(27,38,44,0.7);
-  backdrop-filter: blur(6px);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  padding: 1.2rem;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-shadow: 0 20px 40px rgba(3,17,25,0.45);
-}
-.hero .stats-card .stats-number h2{ font-size:2.6rem; margin:0; color:var(--accent-color); }
+.hero .cta-button .btn:hover{ background:var(--accent-color); border-color:var(--accent-color); color:var(--contrast-color); }
 
 /* -------------------------------------------------------------------------
-   About / Services / General sections - keep structure but add polish
+   About / Services / General sections - cleaned essentials
    ------------------------------------------------------------------------- */
 .section{ padding:60px 0; color:var(--default-color); background:var(--background-color); }
 .section .section-title div{ color:var(--heading-color); font-size:28px; font-weight:700; text-transform:uppercase; font-family:var(--heading-font); }
 
-/* Card styling upgrade */
+/* Simple card styles used across Services */
 .service-card{
-  background: linear-gradient(180deg, rgba(27,38,44,0.98), rgba(27,38,44,0.95));
+  background: var(--surface-color);
   padding:28px;
   border-radius:12px;
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 12px 30px rgba(3,17,25,0.5);
-  transition: transform .28s ease, box-shadow .28s ease, border-color .28s;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
 }
-.service-card:hover { transform: translateY(-8px); border-color: color-mix(in srgb, var(--accent-color), transparent 30%); box-shadow: 0 24px 48px rgba(3,17,25,0.55); }
 .service-card h3{ font-size:1.25rem; margin-bottom:8px; font-weight:700; color:var(--heading-color); }
 .service-card p{ color: color-mix(in srgb, var(--default-color), transparent 20%); }
 
 /* -------------------------------------------------------------------------
-   Portfolio grid basics (visual improvements)
+   Portfolio grid basics
    ------------------------------------------------------------------------- */
 .portfolio .portfolio-item{ padding:8px; }
-.portfolio .portfolio-entry img{ width:100%; display:block; border-radius:8px; transition: transform .35s ease, box-shadow .35s ease; }
-.portfolio .portfolio-entry img:hover { transform: translateY(-6px); box-shadow: 0 18px 30px rgba(0,0,0,0.45); }
+.portfolio .portfolio-entry img{ width:100%; display:block; border-radius:8px; }
 
 /* -------------------------------------------------------------------------
-   Footer essentials (slightly modernized)
+   Footer essentials
    ------------------------------------------------------------------------- */
 .footer{ padding:60px 0 40px; color:var(--default-color); background:var(--background-color); }
 .footer .footer-about .logo span{ color:var(--heading-color); font-size:30px; font-weight:700; }
@@ -291,7 +259,7 @@ h2{ font-size:1.75rem; font-weight:700; }
 @media (min-width:768px) and (max-width:991px){
   .header .header-container{ padding:10px 16px; }
   .site-name{ font-size:34px; }
-  .hero .main-heading h1{ font-size:4rem; } /* preserve */
+  .hero .main-heading h1{ font-size:4rem; }
 }
 
 /* ---------- Small / Mobile screens (<= 767px) ---------- */
@@ -317,7 +285,7 @@ h2{ font-size:1.75rem; font-weight:700; }
   .header-row-2 .social-link i{ font-size:16px; }
   .contact-info{ font-size:13px; gap:8px; }
 
-  /* Hero heading scaled down (preserved) */
+  /* Hero heading scaled down */
   .hero{ padding:60px 0; }
   .hero .main-heading h1{ font-size:3rem; }
 }
@@ -351,13 +319,8 @@ button{ cursor:pointer; }
 /* -------------------------------------------------------------------------
    Minor interactive details
    ------------------------------------------------------------------------- */
-.btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; border-radius:8px; border:0; background:var(--accent-color); color:var(--contrast-color); font-weight:600; transition: transform .18s ease, box-shadow .18s ease; box-shadow: 0 10px 24px rgba(3,17,25,0.36); }
-.btn:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(3,17,25,0.45); }
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; border-radius:8px; border:0; background:var(--accent-color); color:var(--contrast-color); font-weight:600; }
 .btn-outline{ background:transparent; border:1px solid color-mix(in srgb, var(--default-color), transparent 60%); color:var(--accent-color); }
-
-/* subtle fade-in helper */
-.fade-up { transform: translateY(8px); opacity:0; transition: all .6s cubic-bezier(.22,.9,.3,1); }
-.fade-up.in-view { transform: translateY(0); opacity:1; }
 
 /* -------------------------------------------------------------------------
    Small tweaks to avoid conflicts with bootstrapped template utilities
@@ -365,28 +328,480 @@ button{ cursor:pointer; }
 .section-title h2{ font-size:14px; letter-spacing:1.5px; color: color-mix(in srgb, var(--default-color), transparent 50%); text-transform:uppercase; }
 .section-title div{ font-size:28px; font-weight:700; color:var(--heading-color); }
 
-/* -------------------------------------------------------------------------
-   Desktop spacing fix for CREATIVE DESIGNER (preserved)
-   ------------------------------------------------------------------------- */
+
+/* Desktop spacing fix for CREATIVE DESIGNER */
 @media (min-width: 1024px) {
   #hero {
-    padding-top: 150px;  /* preserved and safe */
+    padding-top: 150px;  /* adjust this value as needed */
   }
 }
 
-/* -------------------------------------------------------------------------
-   Mobile hero overlap fix (preserved)
-   ------------------------------------------------------------------------- */
+
+/* --- FIX: Prevent hero title from going under header on mobile --- */
 @media (max-width: 767px) {
   #hero {
     padding-top: 210px !important;
   }
 }
 
-/* small responsive cleanup */
-@media (max-width: 991px) {
-  .hero .stats-card { position: relative; width:90%; margin: 0 auto; bottom:auto; right:auto; margin-top: 1.5rem; }
-  .service-card{ padding: 28px 22px; }
+/* Fix: Email going outside the header box */
+.header-row-2 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
 }
 
-/* End of upgraded main.css */
+.mobile-nav-toggle {
+    display: none !important;
+}
+
+
+/* ------------------------------------------------
+   SOCIAL ICON BRAND COLORS
+--------------------------------------------------*/
+
+.header-row-2 .social-link i.bi-instagram {
+    color: #E1306C !important;  /* Instagram Pink */
+}
+
+.header-row-2 .social-link i.bi-facebook {
+    color: #1877F2 !important;  /* Facebook Blue */
+}
+
+.header-row-2 .social-link i.bi-whatsapp {
+    color: #25D366 !important;  /* WhatsApp Green */
+}
+
+.header-row-2 .social-link i.bi-youtube {
+    color: #FF0000 !important;  /* YouTube Red */
+}
+
+.header-row-2 .social-link i.bi-linkedin {
+    color: #0A66C2 !important;  /* LinkedIn Blue */
+}
+
+/* ------------------------------------------------
+   CONTACT NUMBER + EMAIL COLORS
+--------------------------------------------------*/
+
+.header-row-2 .contact-phone {
+    color: #ff69b4 !important;   /* Hot Pink */
+    font-weight: 600;
+}
+
+.header-row-2 .contact-email {
+    color: #9400D3 !important;   /* Violet */
+    font-weight: 600;
+}
+
+
+.stats-card {
+    background-color: #1c1c1e;
+    padding: 20px 25px;
+    width: fit-content;
+    border-radius: 12px;
+    color: white;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    display: inline-block;
+}
+
+.stats-card .stats-label {
+    font-size: 40px;
+    font-weight: 700;
+    color: #f1c232;  /* Yellow */
+    margin-bottom: 4px;
+}
+
+.stats-card p {
+    margin: 0;
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+/* Yellow Line Section Headings */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.section-heading h2 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #b5b5b5 !important;
+}
+
+/* Yellow Line */
+.section-heading::after {
+  content: "";
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f9c349; /* Yellow line */
+  display: block;
+  border-radius: 5px;
+  max-width: 100px;
+}
+
+/* ============================
+   YELLOW EXPERIENCE BADGE (20+)
+   ============================ */
+.experience-badge {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  background: #e5a825;       /* Yellow */
+  padding: 25px 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.experience-badge .years {
+  display: block;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: px;
+}
+
+.experience-badge .text {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* =====================================
+   YELLOW ICONS FOR FEATURE ITEMS
+===================================== */
+.feature-item i {
+    color: #e5a825 !important;       /* Yellow Color */
+    font-size: 32px;                 /* Larger icon */
+    margin-bottom: 12px;             /* Space below icon */
+    display: block;                  /* Forces icon above heading */
+}
+
+/* Adjust heading style */
+.feature-item h5 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Optional: Add spacing and alignment */
+.feature-item {
+    text-align: left;
+    padding: 10px 0;
+}
+
+/* Make performance solutions Yellow */
+
+/* Yellow color for "performance solutions" */
+.service-heading span {
+  color: #e5a825 !important;   /* GOLD/YELLOW */
+}
+
+/* Yellow icons in service section */
+.service-card .service-icon i {
+  color: #e5a825 !important;
+  font-size: 42px;
+  padding: 20px;
+  background: rgba(229, 168, 37, 0.10);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* To highlight Creative Branding in Yellow */
+
+
+.highlight-yellow {
+    color: #e5a825 !important;
+}
+
+/* Fix service card title overflowing */
+.service-card h3 {
+  display: block;
+  width: 100%;
+  overflow-wrap: break-word;
+  white-space: normal !important;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* Do not force nowrap inside the card */
+.service-card h3 a {
+  white-space: normal !important;
+}
+
+/* Fix card height issues */
+.service-card {
+  overflow: hidden;
+  min-height: 320px;
+}
+
+/* Custom DON'T MISS Badge */
+.content-left .badge {
+  background: rgba(255, 255, 255, 0.05); /* subtle dark pill */
+  color: #f8aa1c; /* yellow font */
+  padding: 10px 25px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+/* Yellow styling for the floating stats card */
+.floating-card .card-icon i {
+  color: #f8aa1c !important;      /* yellow icon */
+  font-size: 28px;
+}
+
+.floating-card .stats-number {
+  color: #f8aa1c !important;       /* yellow number */
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.floating-card .stats-text {
+  color: #f8aa1c !important;       /* yellow text */
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ===============================
+   PORTFOLIO FILTER BUTTONS (HORIZONTAL)
+   =============================== */
+.portfolio-filters {
+  display: flex;
+  flex-wrap: nowrap;        /* keep all buttons in one line */
+  justify-content: center;  /* center align horizontally */
+  gap: 18px;                /* spacing between buttons */
+  padding: 20px 0;
+  list-style: none;
+}
+
+.portfolio-filters li {
+  display: flex;
+  align-items: center;
+  gap: 8px;                 /* space between icon + text */
+  padding: 12px 28px;
+  background: #1a1f1f;      /* dark rounded background */
+  border-radius: 40px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;      /* prevents text from breaking */
+  transition: 0.3s;
+}
+
+/* ACTIVE FILTER BUTTON (YELLOW) */
+.portfolio-filters li.filter-active {
+  background: #f8aa1c !important;
+  color: #000 !important;
+}
+
+/* ICON STYLE */
+.portfolio-filters li i {
+  font-size: 18px;
+  color: inherit;
+}
+
+
+/* CATEGORY TEXT INSIDE IMAGE */
+.entry-meta.inside-image {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f7a21a;    /* Yellow color */
+  z-index: 3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+/*--------------------------------------------------------------
+# Faq Section
+--------------------------------------------------------------*/
+.faq .faq-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+}
+
+.faq .faq-description {
+  font-size: 1rem;
+  color: var(--default-color);
+  margin-bottom: 2rem;
+}
+
+.faq .faq-arrow {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-item {
+  background-color: var(--surface-color);
+  position: relative;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.faq .faq-container .faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq .faq-container .faq-item h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 30px 0 0;
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.faq .faq-container .faq-item h3 .num {
+  color: var(--accent-color);
+  padding-right: 5px;
+}
+
+.faq .faq-container .faq-item h3:hover {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-item .faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 0.3s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.faq .faq-container .faq-item .faq-content p {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.faq .faq-container .faq-item .faq-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  line-height: 0;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.faq .faq-container .faq-item .faq-toggle:hover {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-active h3 {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-active .faq-content {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  opacity: 1;
+  padding-top: 10px;
+}
+
+.faq .faq-container .faq-active .faq-toggle {
+  transform: rotate(90deg);
+  color: var(--accent-color);
+}
+
+
+/* ===========================
+   📱 MOBILE FIXES (MAX 768px)
+   =========================== */
+@media (max-width: 768px) {
+
+    /* 🔹 Fix Header Sliding & Overflow */
+    header, .top-header, .main-header {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .top-header .social-icons,
+    .top-header .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .top-header {
+        padding: 8px 10px;
+        text-align: center;
+    }
+
+    /* 🔹 Fix Brand Name box alignment */
+    .logo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ===============================
+       📌 PORTFOLIO SECTION FIX
+       =============================== */
+    .portfolio-category {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .portfolio-category button {
+        width: auto;
+        padding: 10px 18px;
+        font-size: 14px;
+        white-space: nowrap; /* Prevent breaking text */
+        border-radius: 30px;
+    }
+
+    /* Ensure images fit properly */
+    .portfolio-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* Padding for Portfolio Title */
+    #portfolio .section-title,
+    #portfolio h2 {
+        text-align: center;
+        padding: 0 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* End of optimized main.css */
