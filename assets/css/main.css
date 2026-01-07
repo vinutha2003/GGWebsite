@@ -888,6 +888,25 @@ button{ cursor:pointer; }
   }
 }
 
+/* FORCE HERO IMAGE TO SHOW ON MOBILE */
+@media (max-width: 768px) {
+  .fluid-img {
+    display: block !important;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-img {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
 
 
 
