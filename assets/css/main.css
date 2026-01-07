@@ -793,58 +793,141 @@ button{ cursor:pointer; }
     }
 }
 
-/* 📱 FIX PORTFOLIO FILTER BUTTONS ON MOBILE */
+/* =========================================
+   📱 UNIVERSAL MOBILE ALIGNMENT FIX
+   Works on ALL Android & iOS phones
+   ========================================= */
 @media (max-width: 768px) {
 
-    /* Make container flexible */
-    .portfolio-filters,
-    .portfolio-category {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 10px !important;
-        width: 100% !important;
-        padding: 0 10px !important;
-    }
+  /* Prevent horizontal overflow */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
 
-    /* Style each button */
-    .portfolio-filters li,
-    .portfolio-category button {
-        padding: 10px 15px !important;
-        border-radius: 25px !important;
-        font-size: 14px !important;
-        white-space: nowrap !important;
-        width: auto !important;
-        max-width: 100% !important;
-    }
+  /* 🔹 HEADER FIX */
+  .header,
+  header,
+  .top-header,
+  .header-wrap {
+    height: auto !important;
+    padding: 8px 12px !important;
+    border-radius: 18px !important;
+  }
+
+  /* Social icons + phone alignment */
+  .top-header .d-flex,
+  .top-header .social-icons,
+  .top-header .contact-info {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px;
+    text-align: center;
+  }
+
+  /* Reduce icon size slightly */
+  .top-header i,
+  .top-header svg {
+    font-size: 18px;
+  }
+
+  /* 🔹 HERO SECTION FIX */
+  .hero,
+  .hero-section {
+    min-height: auto !important;
+    padding-top: 20px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .hero-content {
+    padding: 0 14px !important;
+    text-align: left;
+  }
+
+  /* Headline */
+  .hero h1 {
+    font-size: 34px !important;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  /* Subtitle */
+  .hero h2,
+  .hero h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  /* Paragraph text */
+  .hero p {
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 100%;
+  }
+
+  /* 🔹 BUTTON FIX */
+  .hero .btn,
+  .hero a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    padding: 12px 22px;
+  }
+
+  /* 🔹 BOOTSTRAP ROW OVERFLOW FIX */
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  [class*="col-"] {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* FORCE HERO IMAGE TO SHOW ON MOBILE */
+@media (max-width: 768px) {
+  .fluid-img {
+    display: block !important;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-img {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  html, body { 
+    width: 100%; 
+    max-width: 100%; 
+    overflow-x: hidden !important; 
+  }
+  * { 
+    max-width: 100%; 
+    box-sizing: border-box; 
+  }
+  .row { 
+    margin-left: 0 !important; 
+    margin-right: 0 !important; 
+  }
+  [class*="col-"] { 
+    padding-left: 12px !important; 
+    padding-right: 12px !important; 
+  }
 }
 
 
-/* 📱 MAKE PORTFOLIO FILTER BUTTONS VERTICAL ON MOBILE */
-@media (max-width: 768px) {
 
-    /* Container becomes vertical */
-    .portfolio-filters,
-    .portfolio-category {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 12px !important;
-        width: 100% !important;
-        padding: 0 15px !important;
-    }
-
-    /* Each button fills width nicely */
-    .portfolio-filters li,
-    .portfolio-category button {
-        width: 100% !important;
-        max-width: 300px !important; /* centered and neat */
-        text-align: center !important;
-        padding: 12px 15px !important;
-        border-radius: 25px !important;
-        font-size: 15px !important;
-    }
-}
 
 
 
