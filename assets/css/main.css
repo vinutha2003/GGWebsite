@@ -793,6 +793,102 @@ button{ cursor:pointer; }
     }
 }
 
+/* =========================================
+   📱 UNIVERSAL MOBILE ALIGNMENT FIX
+   Works on ALL Android & iOS phones
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* Prevent horizontal overflow */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* 🔹 HEADER FIX */
+  .header,
+  header,
+  .top-header,
+  .header-wrap {
+    height: auto !important;
+    padding: 8px 12px !important;
+    border-radius: 18px !important;
+  }
+
+  /* Social icons + phone alignment */
+  .top-header .d-flex,
+  .top-header .social-icons,
+  .top-header .contact-info {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px;
+    text-align: center;
+  }
+
+  /* Reduce icon size slightly */
+  .top-header i,
+  .top-header svg {
+    font-size: 18px;
+  }
+
+  /* 🔹 HERO SECTION FIX */
+  .hero,
+  .hero-section {
+    min-height: auto !important;
+    padding-top: 20px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .hero-content {
+    padding: 0 14px !important;
+    text-align: left;
+  }
+
+  /* Headline */
+  .hero h1 {
+    font-size: 34px !important;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  /* Subtitle */
+  .hero h2,
+  .hero h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  /* Paragraph text */
+  .hero p {
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 100%;
+  }
+
+  /* 🔹 BUTTON FIX */
+  .hero .btn,
+  .hero a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    padding: 12px 22px;
+  }
+
+  /* 🔹 BOOTSTRAP ROW OVERFLOW FIX */
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  [class*="col-"] {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+
 
 
 
