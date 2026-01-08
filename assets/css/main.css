@@ -1,0 +1,1075 @@
+/* =========================================================================
+   Optimized & Rectified main.css for GunaaGraphics
+   - Cleaned, de-duplicated, responsive
+   - Header fixes: two-row mobile, bold/italic highlighted site-name
+   - Hero h1 reduced on mobile
+   - Keep bootstrap compatibility
+   ========================================================================= */
+
+/* ---------------------------
+   Root variables (colors, fonts)
+   --------------------------- */
+:root{
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --heading-font: "Nunito Sans", sans-serif;
+  --nav-font: "Raleway", sans-serif;
+
+  --background-color: #031119;
+  --surface-color: #1b262c;
+  --default-color: rgba(255,255,255,0.85);
+  --heading-color: #e0e9f2;
+  --accent-color: #e3a127;
+  --contrast-color: #ffffff;
+
+  --nav-color: rgba(255,255,255,0.85);
+  --nav-hover-color: #e3a127;
+  --nav-mobile-background-color: #29343a;
+  --nav-dropdown-background-color: #29343a;
+  --nav-dropdown-color: rgba(255,255,255,0.85);
+}
+
+/* Basic resets & base typography */
+* { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html,body{ height:100%; margin:0; padding:0; }
+body{
+  font-family: var(--default-font);
+  color: var(--default-color);
+  background-color: var(--background-color);
+  line-height:1.6;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Links */
+a{ color: var(--accent-color); text-decoration:none; transition: color .2s; }
+a:hover{ color: color-mix(in srgb, var(--accent-color), transparent 25%); text-decoration:none; }
+
+/* Headings */
+h1,h2,h3,h4,h5,h6{ color:var(--heading-color); font-family:var(--heading-font); margin:0; }
+h1{ font-size:clamp(2rem, 6vw, 5rem); font-weight:800; line-height:1.05; }
+h2{ font-size:1.75rem; font-weight:700; }
+
+/* Small helper utilities used by template */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 15px; }
+.row{ display:flex; flex-wrap:wrap; margin:0 -15px; }
+.col{ padding: 0 15px; }
+
+/* -------------------------------------------------------------------------
+   Header (global) - cleaned & fixed
+   - Two-row mobile behavior:
+     Row 1: logo + nav (desktop), centered on mobile
+     Row 2: social icons + phone + email (centered on mobile)
+   ------------------------------------------------------------------------- */
+
+.header{
+  position: fixed;
+  top: 12px;
+  left: 0;
+  right: 0;
+  z-index: 997;
+  display:flex;
+  justify-content:center;
+  pointer-events:auto;
+}
+
+/* pill container surrounding header inner content */
+.header .header-container{
+  background: var(--surface-color);
+  border-radius: 50px;
+  padding: 8px 22px;
+  display:flex;
+  flex-direction:column; /* stacked by default for safety, overridden on large screens */
+  gap:8px;
+  align-items:center;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.12);
+  width: min(1150px, calc(100% - 30px));
+}
+
+/* Row 1: logo + nav (desktop) */
+.header-row-1{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+/* Logo */
+.header .logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  line-height:1;
+  margin:0;
+  padding:0;
+}
+
+/* Site name (text logo) - bold, italic, highlighted */
+.site-name{
+  font-size: 38px;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--accent-color);
+  letter-spacing:1px;
+  white-space:nowrap;
+  line-height:1;
+  display:inline-block;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Navmenu (desktop) */
+.navmenu{
+  display:block;
+}
+.navmenu ul{ list-style:none; display:flex; gap:6px; margin:0; padding:0; align-items:center; }
+.navmenu a{
+  color:var(--nav-color);
+  padding: 12px 14px;
+  font-family:var(--nav-font);
+  font-size:16px;
+  font-weight:500;
+  white-space:nowrap;
+  transition: color .2s;
+}
+.navmenu a:hover, .navmenu a.active{ color: var(--nav-hover-color); }
+
+/* Mobile nav toggle (hamburger) - visible on small */
+.mobile-nav-toggle{ display:none; cursor:pointer; font-size:26px; color:var(--nav-color); }
+
+/* Row 2: social links + contact info */
+.header-row-2{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:12px;
+  flex-wrap:nowrap;
+  white-space:nowrap;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* social links */
+.header-row-2 .social-link{ color:var(--default-color); display:inline-flex; align-items:center; justify-content:center; }
+.header-row-2 .social-link i{ font-size:18px; line-height:0; display:inline-block; vertical-align:middle; }
+
+/* contact info */
+.contact-info{ display:flex; align-items:center; gap:10px; font-size:14px; color:var(--default-color); white-space:nowrap; }
+.contact-email, .contact-phone{ display:inline-block; }
+
+/* hide scrollbars visually on header row if overflow */
+.header-row-2::-webkit-scrollbar, .header .header-container::-webkit-scrollbar{ height:0; width:0; display:none; }
+
+/* -------------------------------------------------------------------------
+   Hero Section (main heading sizing adjustments)
+   ------------------------------------------------------------------------- */
+.hero{
+  position:relative;
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  padding:100px 0;
+  overflow:hidden;
+  color:var(--default-color);
+}
+
+.hero .container{ position:relative; z-index:2; }
+.hero .main-heading{ margin-bottom:1.5rem; }
+.hero .main-heading h1{
+  font-size: 5rem;
+  font-weight:800;
+  line-height:1.05;
+  letter-spacing:-1px;
+  margin:0 0 .5rem 0;
+}
+.hero .main-heading h2{ font-size:1.35rem; font-weight:500; color: color-mix(in srgb, var(--default-color), transparent 20%); margin:0; }
+
+/* hero description */
+.hero .description p{ font-size:1rem; line-height:1.7; color: color-mix(in srgb, var(--default-color), transparent 20%); }
+
+/* hero CTA */
+.hero .cta-button .btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:.75rem 1.25rem;
+  border-radius:50px;
+  font-weight:600;
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 40%);
+  color:var(--default-color);
+}
+.hero .cta-button .btn:hover{ background:var(--accent-color); border-color:var(--accent-color); color:var(--contrast-color); }
+
+/* -------------------------------------------------------------------------
+   About / Services / General sections - cleaned essentials
+   ------------------------------------------------------------------------- */
+.section{ padding:60px 0; color:var(--default-color); background:var(--background-color); }
+.section .section-title div{ color:var(--heading-color); font-size:28px; font-weight:700; text-transform:uppercase; font-family:var(--heading-font); }
+
+/* Simple card styles used across Services */
+.service-card{
+  background: var(--surface-color);
+  padding:28px;
+  border-radius:12px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+.service-card h3{ font-size:1.25rem; margin-bottom:8px; font-weight:700; color:var(--heading-color); }
+.service-card p{ color: color-mix(in srgb, var(--default-color), transparent 20%); }
+
+/* -------------------------------------------------------------------------
+   Portfolio grid basics
+   ------------------------------------------------------------------------- */
+.portfolio .portfolio-item{ padding:8px; }
+.portfolio .portfolio-entry img{ width:100%; display:block; border-radius:8px; }
+
+/* -------------------------------------------------------------------------
+   Footer essentials
+   ------------------------------------------------------------------------- */
+.footer{ padding:60px 0 40px; color:var(--default-color); background:var(--background-color); }
+.footer .footer-about .logo span{ color:var(--heading-color); font-size:30px; font-weight:700; }
+
+/* -------------------------------------------------------------------------
+   Utilities used by many sections
+   ------------------------------------------------------------------------- */
+.text-center{ text-align:center; }
+.d-flex{ display:flex; }
+.align-items-center{ align-items:center; }
+.justify-content-center{ justify-content:center; }
+.gap-1{ gap:8px; }
+
+/* -------------------------------------------------------------------------
+   Responsive: Desktop -> Tablet -> Mobile
+   ------------------------------------------------------------------------- */
+
+/* ---------- Large screens (>= 992px) ---------- */
+@media (min-width: 992px){
+
+  .header .header-container{ flex-direction:row; align-items:center; justify-content:space-between; padding:10px 20px; border-radius:20px; }
+  .header-row-1{ justify-content:space-between; }
+  .mobile-nav-toggle{ display:none; }
+
+  /* Row2 on desktop aligns to right */
+  .header-row-2{ justify-content:flex-end; overflow:visible; }
+  .navmenu{ display:block; }
+}
+
+/* ---------- Medium screens (>= 768px and < 992px) ---------- */
+@media (min-width:768px) and (max-width:991px){
+  .header .header-container{ padding:10px 16px; }
+  .site-name{ font-size:34px; }
+  .hero .main-heading h1{ font-size:4rem; }
+}
+
+/* ---------- Small / Mobile screens (<= 767px) ---------- */
+@media (max-width: 767px){
+
+  /* Header: stack into two rows (logo centered, row2 center) */
+  .header .header-container{ flex-direction:column; align-items:center; gap:6px; padding:10px 14px; width:calc(100% - 28px); }
+  .header-row-1{ width:100%; justify-content:center; }
+  .navmenu{ display:none; } /* desktop nav hidden on mobile */
+  .mobile-nav-toggle{ display:block; position:absolute; right:16px; top:12px; font-size:26px; color:var(--nav-color); }
+
+  /* Row 2: social + contact centered and inline; if space is tight it wraps but we try to keep one line */
+  .header-row-2{
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    width:100%;
+    padding: 6px 6px;
+  }
+
+  /* Slightly reduce sizes on small screens */
+  .site-name{ font-size:32px; text-align:center; }
+  .header-row-2 .social-link i{ font-size:16px; }
+  .contact-info{ font-size:13px; gap:8px; }
+
+  /* Hero heading scaled down */
+  .hero{ padding:60px 0; }
+  .hero .main-heading h1{ font-size:3rem; }
+}
+
+/* ---------- Extra small phones (<= 420px) ---------- */
+@media (max-width:420px){
+  .site-name{ font-size:28px; }
+  .header-row-2 .social-link i{ font-size:15px; }
+  .contact-info{ font-size:12px; gap:6px; }
+  .hero .main-heading h1{ font-size:2.4rem; }
+}
+
+/* -------------------------------------------------------------------------
+   Mobile nav menu (hamburger dropdown) - minimal override to preserve template behavior
+   ------------------------------------------------------------------------- */
+@media (max-width:1199px){
+  .mobile-nav-toggle{ display:block; }
+  .navmenu ul{ display:none; position:absolute; inset:60px 20px 20px 20px; padding:12px 0; background:var(--nav-mobile-background-color); border-radius:8px; box-shadow:0 4px 18px rgba(0,0,0,0.12); overflow-y:auto; z-index:9998; }
+  .mobile-nav-active .navmenu>ul{ display:block; }
+  .navmenu a{ color:var(--nav-dropdown-color); padding:10px 18px; font-size:16px; display:flex; align-items:center; justify-content:space-between; white-space:nowrap; }
+  .navmenu a:hover, .navmenu .active{ color: var(--nav-dropdown-hover-color); }
+}
+
+/* -------------------------------------------------------------------------
+   Accessibility / small improvements
+   ------------------------------------------------------------------------- */
+img{ max-width:100%; height:auto; display:block; }
+button{ cursor:pointer; }
+[hidden]{ display:none !important; }
+
+/* -------------------------------------------------------------------------
+   Minor interactive details
+   ------------------------------------------------------------------------- */
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; border-radius:8px; border:0; background:var(--accent-color); color:var(--contrast-color); font-weight:600; }
+.btn-outline{ background:transparent; border:1px solid color-mix(in srgb, var(--default-color), transparent 60%); color:var(--accent-color); }
+
+/* -------------------------------------------------------------------------
+   Small tweaks to avoid conflicts with bootstrapped template utilities
+   ------------------------------------------------------------------------- */
+.section-title h2{ font-size:14px; letter-spacing:1.5px; color: color-mix(in srgb, var(--default-color), transparent 50%); text-transform:uppercase; }
+.section-title div{ font-size:28px; font-weight:700; color:var(--heading-color); }
+
+
+/* Desktop spacing fix for CREATIVE DESIGNER */
+@media (min-width: 1024px) {
+  #hero {
+    padding-top: 150px;  /* adjust this value as needed */
+  }
+}
+
+
+/* --- FIX: Prevent hero title from going under header on mobile --- */
+@media (max-width: 767px) {
+  #hero {
+    padding-top: 210px !important;
+  }
+}
+
+/* Fix: Email going outside the header box */
+.header-row-2 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.mobile-nav-toggle {
+    display: none !important;
+}
+
+
+/* ------------------------------------------------
+   SOCIAL ICON BRAND COLORS
+--------------------------------------------------*/
+
+.header-row-2 .social-link i.bi-instagram {
+    color: #E1306C !important;  /* Instagram Pink */
+}
+
+.header-row-2 .social-link i.bi-facebook {
+    color: #1877F2 !important;  /* Facebook Blue */
+}
+
+.header-row-2 .social-link i.bi-whatsapp {
+    color: #25D366 !important;  /* WhatsApp Green */
+}
+
+.header-row-2 .social-link i.bi-youtube {
+    color: #FF0000 !important;  /* YouTube Red */
+}
+
+.header-row-2 .social-link i.bi-linkedin {
+    color: #0A66C2 !important;  /* LinkedIn Blue */
+}
+
+/* ------------------------------------------------
+   CONTACT NUMBER + EMAIL COLORS
+--------------------------------------------------*/
+
+.header-row-2 .contact-phone {
+    color: #ff69b4 !important;   /* Hot Pink */
+    font-weight: 600;
+}
+
+.header-row-2 .contact-email {
+    color: #9400D3 !important;   /* Violet */
+    font-weight: 600;
+}
+
+
+.stats-card {
+    background-color: #1c1c1e;
+    padding: 20px 25px;
+    width: fit-content;
+    border-radius: 12px;
+    color: white;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    display: inline-block;
+}
+
+.stats-card .stats-label {
+    font-size: 40px;
+    font-weight: 700;
+    color: #f1c232;  /* Yellow */
+    margin-bottom: 4px;
+}
+
+.stats-card p {
+    margin: 0;
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+/* Yellow Line Section Headings */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.section-heading h2 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #b5b5b5 !important;
+}
+
+/* Yellow Line */
+.section-heading::after {
+  content: "";
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f9c349; /* Yellow line */
+  display: block;
+  border-radius: 5px;
+  max-width: 100px;
+}
+
+/* ============================
+   YELLOW EXPERIENCE BADGE (20+)
+   ============================ */
+.experience-badge {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  background: #e5a825;       /* Yellow */
+  padding: 25px 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.experience-badge .years {
+  display: block;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: px;
+}
+
+.experience-badge .text {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* =====================================
+   YELLOW ICONS FOR FEATURE ITEMS
+===================================== */
+.feature-item i {
+    color: #e5a825 !important;       /* Yellow Color */
+    font-size: 32px;                 /* Larger icon */
+    margin-bottom: 12px;             /* Space below icon */
+    display: block;                  /* Forces icon above heading */
+}
+
+/* Adjust heading style */
+.feature-item h5 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Optional: Add spacing and alignment */
+.feature-item {
+    text-align: left;
+    padding: 10px 0;
+}
+
+/* Make performance solutions Yellow */
+
+/* Yellow color for "performance solutions" */
+.service-heading span {
+  color: #e5a825 !important;   /* GOLD/YELLOW */
+}
+
+/* Yellow icons in service section */
+.service-card .service-icon i {
+  color: #e5a825 !important;
+  font-size: 42px;
+  padding: 20px;
+  background: rgba(229, 168, 37, 0.10);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* To highlight Creative Branding in Yellow */
+
+
+.highlight-yellow {
+    color: #e5a825 !important;
+}
+
+/* Fix service card title overflowing */
+.service-card h3 {
+  display: block;
+  width: 100%;
+  overflow-wrap: break-word;
+  white-space: normal !important;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* Do not force nowrap inside the card */
+.service-card h3 a {
+  white-space: normal !important;
+}
+
+/* Fix card height issues */
+.service-card {
+  overflow: hidden;
+  min-height: 320px;
+}
+
+/* Custom DON'T MISS Badge */
+.content-left .badge {
+  background: rgba(255, 255, 255, 0.05); /* subtle dark pill */
+  color: #f8aa1c; /* yellow font */
+  padding: 10px 25px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+/* Yellow styling for the floating stats card */
+.floating-card .card-icon i {
+  color: #f8aa1c !important;      /* yellow icon */
+  font-size: 28px;
+}
+
+.floating-card .stats-number {
+  color: #f8aa1c !important;       /* yellow number */
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.floating-card .stats-text {
+  color: #f8aa1c !important;       /* yellow text */
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ===============================
+   PORTFOLIO FILTER BUTTONS (HORIZONTAL)
+   =============================== */
+.portfolio-filters {
+  display: flex;
+  flex-wrap: nowrap;        /* keep all buttons in one line */
+  justify-content: center;  /* center align horizontally */
+  gap: 18px;                /* spacing between buttons */
+  padding: 20px 0;
+  list-style: none;
+}
+
+.portfolio-filters li {
+  display: flex;
+  align-items: center;
+  gap: 8px;                 /* space between icon + text */
+  padding: 12px 28px;
+  background: #1a1f1f;      /* dark rounded background */
+  border-radius: 40px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;      /* prevents text from breaking */
+  transition: 0.3s;
+}
+
+/* ACTIVE FILTER BUTTON (YELLOW) */
+.portfolio-filters li.filter-active {
+  background: #f8aa1c !important;
+  color: #000 !important;
+}
+
+/* ICON STYLE */
+.portfolio-filters li i {
+  font-size: 18px;
+  color: inherit;
+}
+
+
+/* CATEGORY TEXT INSIDE IMAGE */
+.entry-meta.inside-image {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f7a21a;    /* Yellow color */
+  z-index: 3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+/*--------------------------------------------------------------
+# Faq Section
+--------------------------------------------------------------*/
+.faq .faq-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+}
+
+.faq .faq-description {
+  font-size: 1rem;
+  color: var(--default-color);
+  margin-bottom: 2rem;
+}
+
+.faq .faq-arrow {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-item {
+  background-color: var(--surface-color);
+  position: relative;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.faq .faq-container .faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq .faq-container .faq-item h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 30px 0 0;
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.faq .faq-container .faq-item h3 .num {
+  color: var(--accent-color);
+  padding-right: 5px;
+}
+
+.faq .faq-container .faq-item h3:hover {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-item .faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 0.3s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.faq .faq-container .faq-item .faq-content p {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.faq .faq-container .faq-item .faq-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  line-height: 0;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.faq .faq-container .faq-item .faq-toggle:hover {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-active h3 {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-active .faq-content {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  opacity: 1;
+  padding-top: 10px;
+}
+
+.faq .faq-container .faq-active .faq-toggle {
+  transform: rotate(90deg);
+  color: var(--accent-color);
+}
+
+
+/* ===========================
+   📱 MOBILE FIXES (MAX 768px)
+   =========================== */
+@media (max-width: 768px) {
+
+    /* 🔹 Fix Header Sliding & Overflow */
+    header, .top-header, .main-header {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .top-header .social-icons,
+    .top-header .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .top-header {
+        padding: 8px 10px;
+        text-align: center;
+    }
+
+    /* 🔹 Fix Brand Name box alignment */
+    .logo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ===============================
+       📌 PORTFOLIO SECTION FIX
+       =============================== */
+    .portfolio-category {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .portfolio-category button {
+        width: auto;
+        padding: 10px 18px;
+        font-size: 14px;
+        white-space: nowrap; /* Prevent breaking text */
+        border-radius: 30px;
+    }
+
+    /* Ensure images fit properly */
+    .portfolio-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* Padding for Portfolio Title */
+    #portfolio .section-title,
+    #portfolio h2 {
+        text-align: center;
+        padding: 0 10px;
+    }
+}
+
+/* =========================================
+   📱 UNIVERSAL MOBILE ALIGNMENT FIX
+   Works on ALL Android & iOS phones
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* Prevent horizontal overflow */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* 🔹 HEADER FIX */
+  .header,
+  header,
+  .top-header,
+  .header-wrap {
+    height: auto !important;
+    padding: 8px 12px !important;
+    border-radius: 18px !important;
+  }
+
+  /* Social icons + phone alignment */
+  .top-header .d-flex,
+  .top-header .social-icons,
+  .top-header .contact-info {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px;
+    text-align: center;
+  }
+
+  /* Reduce icon size slightly */
+  .top-header i,
+  .top-header svg {
+    font-size: 18px;
+  }
+
+  /* 🔹 HERO SECTION FIX */
+  .hero,
+  .hero-section {
+    min-height: auto !important;
+    padding-top: 20px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .hero-content {
+    padding: 0 14px !important;
+    text-align: left;
+  }
+
+  /* Headline */
+  .hero h1 {
+    font-size: 34px !important;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  /* Subtitle */
+  .hero h2,
+  .hero h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  /* Paragraph text */
+  .hero p {
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 100%;
+  }
+
+  /* 🔹 BUTTON FIX */
+  .hero .btn,
+  .hero a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    padding: 12px 22px;
+  }
+
+  /* 🔹 BOOTSTRAP ROW OVERFLOW FIX */
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  [class*="col-"] {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* FORCE HERO IMAGE TO SHOW ON MOBILE */
+@media (max-width: 768px) {
+  .fluid-img {
+    display: block !important;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-img {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+
+/* ---------- MOBILE FIXES ---------- */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  section {
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin-top: 0 !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .hero,
+  .home,
+  .banner {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .hero-content,
+  .home-content {
+    text-align: center;
+    padding: 20px;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  .navbar,
+  .header {
+    position: relative !important;
+  }
+
+  .overlay,
+  .floating-box {
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+
+}
+
+/* =========================
+   MOBILE FIXES
+========================= */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Fix header floating issue */
+  .top-header,
+  .header-card {
+    position: relative !important;
+    top: 0 !important;
+    margin-bottom: 20px;
+  }
+
+  /* Fix hero section spacing */
+  .hero,
+  .hero-section {
+    min-height: auto !important;
+    padding-top: 120px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .hero-content {
+    padding: 0 16px !important;
+    text-align: left !important;
+  }
+
+  .hero h1 {
+    font-size: 28px !important;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 14px !important;
+    line-height: 1.6;
+  }
+
+  /* Fix overlapping card */
+  .floating-card,
+  .info-card {
+    position: static !important;
+    width: 100% !important;
+    margin: 20px auto;
+  }
+
+  /* Fix sections visibility */
+  section {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Fix footer spacing */
+  footer {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .container,
+  .row {
+    max-width: 100% !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .portfolio-container,
+  .services-container,
+  .about-container {
+    display: block !important;
+  }
+
+  .portfolio-item,
+  .service-item,
+  .about-item {
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* End of optimized main.css */
