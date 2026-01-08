@@ -957,6 +957,69 @@ button{ cursor:pointer; }
 
 }
 
+/* =========================
+   MOBILE FIXES
+========================= */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Fix header floating issue */
+  .top-header,
+  .header-card {
+    position: relative !important;
+    top: 0 !important;
+    margin-bottom: 20px;
+  }
+
+  /* Fix hero section spacing */
+  .hero,
+  .hero-section {
+    min-height: auto !important;
+    padding-top: 120px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .hero-content {
+    padding: 0 16px !important;
+    text-align: left !important;
+  }
+
+  .hero h1 {
+    font-size: 28px !important;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 14px !important;
+    line-height: 1.6;
+  }
+
+  /* Fix overlapping card */
+  .floating-card,
+  .info-card {
+    position: static !important;
+    width: 100% !important;
+    margin: 20px auto;
+  }
+
+  /* Fix sections visibility */
+  section {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Fix footer spacing */
+  footer {
+    padding-bottom: 40px;
+  }
+}
+
+
+
 
 
 
