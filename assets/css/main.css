@@ -908,6 +908,56 @@ button{ cursor:pointer; }
 
 
 
+/* ---------- MOBILE FIXES ---------- */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  section {
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin-top: 0 !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .hero,
+  .home,
+  .banner {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .hero-content,
+  .home-content {
+    text-align: center;
+    padding: 20px;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  .navbar,
+  .header {
+    position: relative !important;
+  }
+
+  .overlay,
+  .floating-box {
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+
+}
+
+
 
 
 
