@@ -931,8 +931,48 @@ button{ cursor:pointer; }
   .visual-content, .stats-card, .experience-badge { position: relative !important; }
 }
 
-/* Cache buster - increment version */
-<link href="assets/css/main.css?v=phonefix1" rel="stylesheet">
+/* CRITICAL PHONE SCROLL FIX - Forces content visibility after button clicks */
+@media only screen and (max-width: 768px) {
+  html { 
+    scroll-padding-top: 180px !important; /* Reserves header space on scroll */
+  }
+  
+  /* FORCE ALL SECTIONS VISIBLE */
+  section, .about, .services, .portfolio, .faq-9, .contact {
+    position: relative !important;
+    z-index: 1 !important;
+    background: var(--background-color) !important;
+    overflow: visible !important;
+    padding-top: 100px !important;
+    min-height: 100vh !important;
+  }
+  
+  /* SCROLL TARGETS - Clear header overlap */
+  #about, #services, #portfolio, #faq, #contact {
+    scroll-margin-top: 180px !important;
+    padding-top: 180px !important;
+  }
+  
+  /* BODY SCROLL FIX */
+  body, main {
+    padding-top: 160px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+  
+  /* EMERGENCY CONTENT VISIBILITY */
+  .container, .row, [class*="col-"] {
+    position: relative !important;
+    z-index: 10 !important;
+    overflow: visible !important;
+  }
+}
+
+/* DESKTOP SAFE */
+@media (min-width: 769px) {
+  html { scroll-padding-top: 120px; }
+}
+
 
 
 
