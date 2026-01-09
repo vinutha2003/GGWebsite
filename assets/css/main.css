@@ -788,13 +788,14 @@ button{ cursor:pointer; }
 }
 
 /* =========================
-   FINAL CLEAN MOBILE FIX
+   FINAL CLEAN MOBILE FIX (SAFE)
 ========================= */
 @media (max-width: 768px) {
 
   html, body {
     width: 100%;
     overflow-x: hidden;
+    overflow-y: auto;
   }
 
   /* Header */
@@ -808,30 +809,39 @@ button{ cursor:pointer; }
     border-radius: 20px;
   }
 
-  /* Hero */
+  /* Hero FIX */
   #hero {
     min-height: auto !important;
-    padding-top: 140px !important;   /* IMPORTANT */
+    height: auto !important;
+    overflow: visible !important;
+    padding-top: 140px !important;
     padding-bottom: 60px !important;
   }
 
-  .hero .main-heading h1 {
-    font-size: 2.4rem;
+  /* Prevent absolute elements from blocking scroll */
+  .visual-content,
+  .stats-card,
+  .fluid-shape,
+  .experience-badge {
+    position: relative !important;
   }
 
-  .hero .main-heading h2 {
-    font-size: 1.2rem;
+  .stats-card {
+    margin-top: 30px;
   }
 
-  .hero p {
-    font-size: 15px;
-    line-height: 1.7;
+  /* About section visibility */
+  #about {
+    margin-top: 40px;
+    position: relative;
+    z-index: 2;
   }
 
   /* Sections */
   section {
     padding-top: 60px;
     padding-bottom: 60px;
+    overflow: visible !important;
   }
 
   /* Fix Bootstrap overflow */
