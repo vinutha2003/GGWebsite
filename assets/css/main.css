@@ -861,6 +861,25 @@ button{ cursor:pointer; }
   }
 }
 
+/* ===== MOBILE HERO OVERRIDE (CRITICAL FIX) ===== */
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .main {
+    overflow: visible !important;
+  }
+
+  section {
+    overflow: visible !important;
+  }
+}
+
+
 
 
 
