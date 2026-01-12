@@ -931,11 +931,28 @@ button{ cursor:pointer; }
   .visual-content, .stats-card, .experience-badge { position: relative !important; }
 }
 
-/* CRITICAL PHONE SCROLL FIX - Forces content visibility after button clicks */
+/* REPAIR: Restore content flow on mobile */
 @media only screen and (max-width: 768px) {
-  html { 
-    scroll-padding-top: 180px !important; /* Reserves header space on scroll */
+  html, body {
+    overflow-x: hidden !important;
+    padding-top: 0 !important; /* Remove the massive forced padding */
   }
+
+  /* Reset forced heights that cause the blank screen */
+  section, .about, .services, .portfolio, .contact {
+    min-height: auto !important; /* Allow content to dictate height */
+    padding-top: 80px !important; /* Balanced space for the header */
+    padding-bottom: 40px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Ensure the Hero section doesn't push content off-screen */
+  #hero {
+    padding-top: 140px !important;
+    min-height: 60vh !important;
+  }
+}
   
   /* FORCE ALL SECTIONS VISIBLE */
   section, .about, .services, .portfolio, .faq-9, .contact {
@@ -973,6 +990,60 @@ button{ cursor:pointer; }
   html { scroll-padding-top: 120px; }
 }
 
+/* Force content visibility if animations fail on mobile */
+@media (max-width: 768px) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: translate(0) scale(1) !important;
+    visibility: visible !important;
+  }
+}
+
+/* Safety Net: Show content even if JavaScript fails */
+[data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+@media (max-width: 768px) {
+  /* Stack the image and text properly */
+  .about .row {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  /* Make the badge fit better on small screens */
+  .experience-badge {
+    position: relative !important; /* Stop floating on mobile */
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    margin-top: -30px; /* Pull it slightly up towards the image */
+    padding: 15px !important;
+    z-index: 5;
+  }
+
+  .experience-badge .years {
+    font-size: 32px !important; /* Smaller text for mobile */
+  }
+
+  /* Ensure the content column is visible */
+  .about-content {
+    margin-top: 30px;
+    text-align: center;
+  }
+}
+
+/* If AOS fails to trigger on mobile, show the About section anyway */
+@media (max-width: 768px) {
+  .about [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
 
 
 
