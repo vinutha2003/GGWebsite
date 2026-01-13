@@ -722,330 +722,52 @@ button{ cursor:pointer; }
   color: var(--accent-color);
 }
 
-/* =========================
-   FINAL CLEAN MOBILE FIX
-========================= */
+/* --- CLEAN STYLE MOBILE FIX --- */
 @media (max-width: 768px) {
-  /* Prevent horizontal scrolling which breaks animations */
-  html, body {
-    overflow-x: hidden !important;
-  }
-
-  /* Clear Header Spacing */
-  #hero {
-    padding-top: 140px !important;
-    min-height: auto !important;
-    text-align: center;
-  }
-
-  /* Force clean alignment for About/Services */
-  .section {
-    padding: 60px 0 !important;
-    overflow: hidden !important; /* Contains the flip animations */
-  }
-
-  .row {
-    display: flex;
-    flex-direction: column !important;
-    gap: 30px;
-  }
-
-  /* Fix the yellow experience badge alignment */
-  .experience-badge {
-    position: relative !important;
-    width: 100% !important;
-    transform: none !important;
-    left: 0 !important;
-    margin-top: 15px;
-  }
-
-  /* Ensure items actually "fade in" on mobile */
-  [data-aos] {
-    opacity: 0;
-    transition-property: transform, opacity;
-  }
-
-  [data-aos].aos-animate {
-    opacity: 1;
-  }
-}
-
-/* =========================
-   FINAL CLEAN MOBILE FIX (SAFE)
-========================= */
-@media (max-width: 768px) {
-
-  html, body {
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
-  /* Header */
-  .header {
-    position: fixed;
-    top: 10px;
-  }
-
+  /* 1. Header: Compact and Centered */
   .header .header-container {
-    padding: 10px 14px;
-    border-radius: 20px;
+    padding: 10px 15px !important;
+    width: 95% !important;
+    gap: 8px !important;
+    background: rgba(27, 38, 44, 0.98) !important;
+    flex-direction: column !important; /* Forces Logo row over Contact row */
   }
 
-  /* Hero FIX */
-  #hero {
-    min-height: auto !important;
-    height: auto !important;
-    overflow: visible !important;
-    padding-top: 140px !important;
-    padding-bottom: 60px !important;
-  }
-
-  /* Prevent absolute elements from blocking scroll */
-  .visual-content,
-  .stats-card,
-  .fluid-shape,
-  .experience-badge {
-    position: relative !important;
-  }
-
-  .stats-card {
-    margin-top: 30px;
-  }
-
-  /* About section visibility */
-  #about {
-    margin-top: 40px;
-    position: relative;
-    z-index: 2;
-  }
-
-  /* Sections */
-  section {
-    padding-top: 60px;
-    padding-bottom: 60px;
-    overflow: visible !important;
-  }
-
-  /* Fix Bootstrap overflow */
-  .row {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  [class*="col-"] {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-/* ===== MOBILE HERO OVERRIDE (CRITICAL FIX) ===== */
-@media (max-width: 768px) {
-
-  .hero {
-    min-height: auto !important;
-    height: auto !important;
-    overflow: visible !important;
-  }
-
-  .main {
-    overflow: visible !important;
-  }
-
-  section {
-    overflow: visible !important;
-  }
-}
-
-/* EMERGENCY PHONE FIX - Overrides everything for max compatibility */
-@media only screen and (max-width: 768px) and (max-device-width: 768px) {
-  html, body { 
-    width: 100vw !important; 
-    overflow-x: hidden !important; 
-    padding-top: 160px !important; /* Clears fixed header */
-  }
-  
-  .header { 
-    top: 10px !important; 
-    z-index: 9999 !important; 
-  }
-  
-  .header .header-container { 
-    flex-direction: column !important; 
-    padding: 12px 16px !important; 
-    width: calc(100vw - 32px) !important; 
-    border-radius: 20px !important;
-  }
-  
-  .header-row-1 { 
-    justify-content: center !important; 
-    width: 100% !important;
-  }
-  
+  .header-row-1 { justify-content: center !important; }
   .header-row-2 { 
     justify-content: center !important; 
-    flex-wrap: wrap !important; 
-    gap: 6px !important; 
-    overflow: hidden !important;
-    font-size: 12px !important;
+    gap: 12px !important; 
+    font-size: 11px !important; 
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
   }
+
+  /* 2. Remove Massive Gaps (The Spacing Fix) */
+  html, body { padding-top: 0 !important; }
   
-  .site-name { font-size: 26px !important; }
-  
-  #hero { 
-    padding-top: 180px !important; 
-    padding-bottom: 60px !important; 
+  #hero {
+    padding-top: 150px !important; /* Space for header only */
+    padding-bottom: 40px !important;
     min-height: auto !important;
   }
-  
-  .hero .main-heading h1 { font-size: 2.2rem !important; }
-  
+
+  section, .section {
+    padding: 50px 0 !important; /* Tight, professional spacing */
+    min-height: auto !important; /* Removes the 100vh height issue */
+  }
+
+  /* 3. The "Pop" Alignment Fixes */
   .row { margin: 0 !important; }
-  [class*="col-"] { padding: 0 12px !important; margin-bottom: 20px !important; }
+  [class*="col-"] { padding: 0 15px !important; }
   
-  .mobile-nav-toggle { display: block !important; position: absolute !important; right: 16px !important; top: 12px !important; }
-  
-  /* Force no overlaps */
-  .visual-content, .stats-card, .experience-badge { position: relative !important; }
-}
-
-/* REPAIR: Restore content flow on mobile */
-@media only screen and (max-width: 768px) {
-  html, body {
-    overflow-x: hidden !important;
-    padding-top: 0 !important; /* Remove the massive forced padding */
-  }
-
-  /* Reset forced heights that cause the blank screen */
-  section, .about, .services, .portfolio, .contact {
-    min-height: auto !important; /* Allow content to dictate height */
-    padding-top: 80px !important; /* Balanced space for the header */
-    padding-bottom: 40px !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  /* Ensure the Hero section doesn't push content off-screen */
-  #hero {
-    padding-top: 140px !important;
-    min-height: 60vh !important;
-  }
-}
-  
-  /* FORCE ALL SECTIONS VISIBLE */
-  section, .about, .services, .portfolio, .faq-9, .contact {
-    position: relative !important;
-    z-index: 1 !important;
-    background: var(--background-color) !important;
-    overflow: visible !important;
-    padding-top: 100px !important;
-    min-height: 100vh !important;
-  }
-  
-  /* SCROLL TARGETS - Clear header overlap */
-  #about, #services, #portfolio, #faq, #contact {
-    scroll-margin-top: 180px !important;
-    padding-top: 180px !important;
-  }
-  
-  /* BODY SCROLL FIX */
-  body, main {
-    padding-top: 160px !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-  }
-  
-  /* EMERGENCY CONTENT VISIBILITY */
-  .container, .row, [class*="col-"] {
-    position: relative !important;
-    z-index: 10 !important;
-    overflow: visible !important;
-  }
-}
-
-/* DESKTOP SAFE */
-@media (min-width: 769px) {
-  html { scroll-padding-top: 120px; }
-}
-
-/* Force content visibility if animations fail on mobile */
-@media (max-width: 768px) {
-  [data-aos] {
-    opacity: 1 !important;
-    transform: translate(0) scale(1) !important;
-    visibility: visible !important;
-  }
-}
-
-/* Safety Net: Show content even if JavaScript fails */
-[data-aos] {
-  opacity: 1 !important;
-  transform: none !important;
-  visibility: visible !important;
-}
-
-@media (max-width: 768px) {
-  /* Stack the image and text properly */
-  .about .row {
-    display: flex;
-    flex-direction: column !important;
-  }
-
-  /* Make the badge fit better on small screens */
+  /* Prevent experience badge from hiding text */
   .experience-badge {
-    position: relative !important; /* Stop floating on mobile */
-    bottom: auto !important;
-    left: auto !important;
+    position: relative !important;
+    width: 95% !important;
+    margin: -20px auto 0 !important;
     transform: none !important;
-    width: 100% !important;
-    margin-top: -30px; /* Pull it slightly up towards the image */
-    padding: 15px !important;
-    z-index: 5;
-  }
-
-  .experience-badge .years {
-    font-size: 32px !important; /* Smaller text for mobile */
-  }
-
-  /* Ensure the content column is visible */
-  .about-content {
-    margin-top: 30px;
-    text-align: center;
+    left: 0 !important;
+    bottom: 0 !important;
   }
 }
-
-/* If AOS fails to trigger on mobile, show the About section anyway */
-@media (max-width: 768px) {
-  .about [data-aos] {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-  }
-}
-
-.service-card {
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  border: 1px solid rgba(255,255,255,0.1);
-  background: #1b262c;
-}
-
-.service-card:hover {
-  transform: translateY(-10px); /* Lift up */
-  background: #232d34;
-  border-color: var(--accent-color); /* Yellow border on hover */
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-}
-
-
-
-
-
-
-
-
 /* End of optimized main.css */
