@@ -823,4 +823,90 @@ button{ cursor:pointer; }
     bottom: 0 !important;
   }
 }
+
+/* --- MOBILE PHONE STYLES (3-ROW CENTERED) --- */
+@media (max-width: 768px) {
+  
+  /* 1. Stack the main container into a column */
+  .header-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 20px 10px !important;
+    gap: 15px !important; /* Space between the 3 main rows */
+  }
+
+  /* 2. ROW 1: Center the Logo */
+  .header-row-1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .header-row-1 .navmenu {
+    display: none; /* Hide desktop menu */
+  }
+
+  /* Position the hamburger menu to the side so it doesn't block the logo */
+  .header-row-1 .mobile-nav-toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* 3. ROW 2 & 3: Split the second row into two vertical lines */
+  .header-row-2 {
+    display: flex !important;
+    flex-direction: column !important; /* Forces socials and contact info to stack */
+    align-items: center !important;
+    gap: 12px; /* Spacing between social icons and contact text */
+    width: 100%;
+  }
+
+  /* Row 2: Social Icons Allignment */
+  .header-row-2 .social-link {
+    display: inline-block;
+    margin: 0 8px;
+    font-size: 20px;
+    color: var(--accent-color, #e3a127); /* Uses your orange accent color */
+  }
+
+  /* Row 3: Contact Info Allignment */
+  .header-row-2 .contact-info {
+    display: flex !important;
+    flex-direction: column; /* Stacks Phone above Email */
+    align-items: center;
+    gap: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+    width: 80%;
+  }
+
+  .header-row-2 .contact-phone,
+  .header-row-2 .contact-email {
+    font-size: 14px;
+    color: var(--default-color, #ffffff);
+  }
+}
+
+/* --- LAPTOP VIEW (No changes to your existing perfect layout) --- */
+@media (min-width: 769px) {
+  .header-row-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .header-row-2 {
+    /* Ensure laptop remains side-by-side if that's your current perfect setup */
+    display: flex; 
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+}
 /* End of optimized main.css */
