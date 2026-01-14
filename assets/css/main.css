@@ -948,4 +948,12 @@ button{ cursor:pointer; }
   .hero .main-heading h1{ font-size: 2.3rem; }
 }
 
+/* Hide hamburger icon on mobile only */
+@media (max-width: 768px) {
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+}
+
+
 /* End of optimized main.css */
