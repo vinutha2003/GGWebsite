@@ -955,5 +955,26 @@ button{ cursor:pointer; }
   }
 }
 
+/* Force social icons to stay in one horizontal row on mobile */
+@media (max-width: 768px) {
+  .header-row-2 {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  .header-row-2 .social-link {
+    display: inline-flex !important;
+  }
+
+  .header-row-2 .contact-info {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    white-space: nowrap;
+  }
+}
+
 
 /* End of optimized main.css */
