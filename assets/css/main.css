@@ -976,5 +976,81 @@ button{ cursor:pointer; }
   }
 }
 
+/* ========= FINAL OVERRIDE: STOP VERTICAL ICONS ========= */
+@media (max-width: 768px) {
+
+  .header .header-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 94% !important;
+    padding: 15px 10px !important;
+    gap: 12px !important;
+    border-radius: 20px !important;
+  }
+
+  .header-row-1 {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 8px !important;
+  }
+
+  .site-name { 
+    font-size: 26px !important; 
+    text-align: center !important; 
+  }
+
+  .navmenu,
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+
+  /* FORCE SOCIAL ICONS INTO ONE HORIZONTAL ROW */
+  .header-row-2 {
+    display: flex !important;
+    flex-direction: row !important;   /* KEY FIX */
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .header-row-2 .social-link {
+    display: inline-flex !important;
+    flex-direction: row !important;   /* PREVENT COLUMN */
+    align-items: center !important;
+    font-size: 20px !important;
+  }
+
+  /* CONTACT INFO ON 3RD ROW */
+  .header-row-2 .contact-info {
+    flex: 0 0 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    font-size: 11px !important;
+    padding-top: 8px !important;
+    white-space: nowrap !important;
+  }
+
+  #hero {
+    padding-top: 220px !important;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+  .site-name { font-size: 22px !important; }
+  .header-row-2 .contact-info {
+    font-size: 9px !important;
+    gap: 6px !important;
+  }
+}
+
+
 
 /* End of optimized main.css */
