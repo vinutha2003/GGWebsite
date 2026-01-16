@@ -1052,5 +1052,49 @@ button{ cursor:pointer; }
 }
 
 
+/* ===== FIX TOP HEADER ALIGNMENT (MOBILE) ===== */
+@media (max-width: 768px) {
+
+  /* Top bar container */
+  .top-bar,
+  .header-top,
+  .top-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 10px 8px !important;
+    gap: 8px !important;
+  }
+
+  /* Social icons */
+  .top-bar .social-links,
+  .header-top .social-links {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  /* Phone & email */
+  .top-bar .contact-info,
+  .header-top .contact-info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    word-break: break-word !important;
+  }
+
+  /* Prevent overflow */
+  .top-bar *,
+  .header-top * {
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+  }
+}
+
+
 
 /* End of optimized main.css */
