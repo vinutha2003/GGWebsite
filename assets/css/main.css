@@ -1096,5 +1096,11 @@ button{ cursor:pointer; }
 }
 
 
-
+@media only screen and (max-width: 767px) {
+  .header-class { /* Replace with your actual header class */
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+  }
+}
 /* End of optimized main.css */
